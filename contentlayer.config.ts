@@ -92,7 +92,7 @@ function createSearchIndex(allBlogs) {
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
-  filePathPattern: 'blog/**/*.mdx',
+  filePathPattern: 'blog/*.{md,mdx}',  // 匹配所有的 .md 文件
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -106,6 +106,10 @@ export const Blog = defineDocumentType(() => ({
     layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
+    type: {  // 添加一个 type 字段
+      type: 'string',
+      default: 'Blog',  // 默认值为 'Blog'
+    },
   },
   computedFields: {
     ...computedFields,
@@ -127,7 +131,7 @@ export const Blog = defineDocumentType(() => ({
 
 export const Authors = defineDocumentType(() => ({
   name: 'Authors',
-  filePathPattern: 'authors/**/*.mdx',
+  filePathPattern: 'authors/**/*.{md,mdx}',
   contentType: 'mdx',
   fields: {
     name: { type: 'string', required: true },
@@ -146,6 +150,7 @@ export const Authors = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'data',
   documentTypes: [Blog, Authors],
+  
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
