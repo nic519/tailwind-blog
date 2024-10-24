@@ -1,15 +1,15 @@
-import { ReactNode } from 'react'
+"use client"
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
-import Image from '@/components/Image'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import TableOfContents from '@/components/TableOfContents'
+import TableOfContents from '@/components/TableOfContents' 
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
@@ -31,9 +31,9 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags } = content
+  const { filePath, path, slug, date, title, tags, toc } = content
   const basePath = path.split('/')[0]
-
+  // console.log('toc=', toc)
   return (
     <SectionContainer>
       <ScrollTopAndComment />
@@ -75,11 +75,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     </div>
                   </div>
                 )}
- 
 
               </div>
               
-                <TableOfContents />
+                <TableOfContents source={toc} />
                 {/* <dl className="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
                   <dt className="sr-only">Authors</dt>
                   <dd>
@@ -133,7 +132,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
             {/* 文章主题信息 */}
             <div className="divide-y divide-gray-200 pt-0 pb-8 transition-colors dark:divide-gray-700 lg:col-span-4">
               <div id="article-content" className="prose max-w-none pb-8 pt-10 dark:prose-invert">
-                {children}
+                <div>
+                  {children}
+                </div>
+                {/* <TableOfContents source={toc} /> */}
               </div>
               <div className="pb-6 pt-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(path)} rel="nofollow">
