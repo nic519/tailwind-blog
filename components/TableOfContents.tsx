@@ -91,7 +91,7 @@ const TableOfContents = ({ source }: Props) => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 rounded bg-gray-50 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 px-4 py-2">
       <p className="mb-5 text-lg font-semibold text-gray-900 transition-colors dark:text-gray-100">
         目录
       </p>
