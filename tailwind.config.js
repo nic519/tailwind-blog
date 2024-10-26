@@ -53,6 +53,10 @@ module.exports = {
             code: {
               color: theme('colors.indigo.500'),
             },
+            'blockquote p': {
+              fontStyle: 'normal', // 移除斜体
+              color: theme('colors.gray.500'),
+            },
           },
         },
         invert: {

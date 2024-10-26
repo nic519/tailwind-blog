@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --main-gradient: linear-gradient(to right, #3b82f6, #ef4444);
+  }
+}
+
+@layer components {
+  .prose h2 {
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  .prose h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.25rem;
+    width: 6rem;
+    border-radius: 9999px;
+    background: var(--main-gradient);
+  }
+}

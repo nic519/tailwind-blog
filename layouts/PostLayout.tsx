@@ -1,5 +1,5 @@
 "use client"
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
 import Comments from '@/components/Comments'
@@ -11,7 +11,7 @@ import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import TableOfContents from '@/components/TableOfContents'
 import Image from 'next/image'
-
+import 'css/globals.css'
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`
@@ -70,11 +70,11 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
             {/* 文章主题信息 */}
             <div className="divide-y divide-gray-200 pt-0 pb-8 transition-colors dark:divide-gray-700 lg:col-span-4">
-              <div id="article-content" className="prose max-w-none pb-8 pt-10 dark:prose-invert">
+              <div id="article-content" className="prose max-w-none pb-8 pt-10 
+              dark:prose-invert prose-img:rounded-lg prose-h2:relative prose-h2:pb-3">
                 <div>
                   {children}
                 </div>
-                {/* <TableOfContents source={toc} /> */}
               </div>
               <div className="pb-6 pt-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(path)} rel="nofollow">
