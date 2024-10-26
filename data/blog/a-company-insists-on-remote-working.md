@@ -1,6 +1,6 @@
 ---
 title: 元宇宙火了，这家坚持全员远程办公企业的老板想谈点看法
-date: 2024-2-08T13:26:19.502260+08:00
+date: 2024-2-9 02:17:28
 abbrlink: a-company-insists-on-remote-working
 categories:
   - 转载
