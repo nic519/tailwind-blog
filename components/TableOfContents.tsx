@@ -60,15 +60,14 @@ type Props = {
 };
 
 const TableOfContents = ({ source }: Props) => {
-  // 确保 source 是一个数组
   const tocData = source;
+  const slugger = new GithubSlugger();
 
-  // console.log('tocData=', tocData)
   const headings = tocData.map((item) => {
     return {
       text: item.value,
       level: item.depth,
-      id: item.url.slice(1), // 去掉 '#' 符号
+      id: slugger.slug(item.value), // 使用 rehype-slug 的 slug 函数
     };
   });
 
@@ -76,10 +75,25 @@ const TableOfContents = ({ source }: Props) => {
 
   useIntersectionObserver(setActiveId);
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    // 这行代码阻止了按钮的默认行为（如果有的话）
+    // 在这种情况下，它主要是为了确保点击按钮不会导致页面刷新或其他意外行为
+    e.preventDefault();
+    // 使用传入的id来查找对应的DOM元素 
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    }
+  };
+
   return (
     <div className="mt-10">
       <p className="mb-5 text-lg font-semibold text-gray-900 transition-colors dark:text-gray-100">
-        Table of Contents
+        目录
       </p>
       <div className="flex flex-col items-start justify-start">
         {headings.map((heading, index) => {
@@ -94,14 +108,7 @@ const TableOfContents = ({ source }: Props) => {
                 'mb-3 text-left text-sm transition-colors hover:underline'
               )}
               style={{ paddingLeft: `${(heading.level - 2) * 1}rem` }}
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector(`#${heading.id}`)?.scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start',
-                  inline: 'nearest',
-                });
-              }}
+              onClick={(e) => handleClick(e, heading.id)}
             >
               {heading.text}
             </button>
