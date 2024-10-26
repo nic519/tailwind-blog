@@ -89,7 +89,7 @@ const TableOfContents = ({ source }: Props) => {
               type="button"
               className={clsx(
                 heading.id === activeId
-                  ? 'font-medium text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'
+                  ? 'font-semibold text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'
                   : 'font-normal text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200',
                 'mb-3 text-left text-sm transition-colors hover:underline'
               )}

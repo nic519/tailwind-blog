@@ -25,7 +25,7 @@ module.exports = {
         sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
       },
       colors: {
-        primary: colors.pink,
+        primary: colors.sky,
         gray: colors.gray,
       },
       zIndex: {
@@ -56,7 +56,7 @@ module.exports = {
             'blockquote p': {
               fontStyle: 'normal', // 移除斜体
               color: theme('colors.gray.500'),
-            },
+            }
           },
         },
         invert: {
