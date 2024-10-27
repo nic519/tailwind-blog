@@ -70,7 +70,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
             {/* 文章主题信息 */}
             <div className="divide-y divide-gray-200 pt-0 pb-8 transition-colors dark:divide-gray-700 lg:col-span-9">
               <div id="article-content" className="prose max-w-none pb-8 pt-0 pe-10 
-              dark:prose-invert prose-img:rounded-lg prose-h2:relative prose-h2:pb-3">
+              dark:prose-invert prose-img:rounded-lg prose-h2:relative prose-h2:pb-3
+              prose-li:marker:text-primary-500
+              prose-blockquote:border-primary-500
+              prose-strong:text-primary-500">
                 <div>
                   {children}
                 </div>

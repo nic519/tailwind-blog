@@ -39,6 +39,20 @@ const ThemeSwitch2 = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
   }
 
+  // 如果组件未挂载，返回空的按钮以避免闪烁
+  if (!mounted) {
+    return (
+      <button
+        aria-label="切换深色模式"
+        type="button"
+        className="relative inline-flex h-5 w-9 items-center rounded-full transition-colors bg-gray-200"
+      >
+        <span className="sr-only">切换主题</span>
+        <span className="inline-flex h-6 w-6 transform items-center justify-center rounded-full bg-white shadow-md" />
+      </button>
+    )
+  }
+
   return (
     <button
       aria-label="切换深色模式"
@@ -57,8 +71,8 @@ const ThemeSwitch2 = () => {
       >
         {mounted && (
           resolvedTheme === 'dark' ? 
-            <Moon className="h-4 w-4 text-indigo-600" /> : 
-            <Sun className="h-4 w-4 text-yellow-400" />
+            <Moon  /> : 
+            <Sun />
         )}
       </span>
     </button>
