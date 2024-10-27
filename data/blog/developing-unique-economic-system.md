@@ -3,8 +3,7 @@ title: 我们能否完全抛弃西方经济学而建立自己的经济学体系�
 abbrlink: developing-unique-economic-system
 categories:
   - 转载
-date: 2024-2-08T13:26:19.502260+08:00
-updated: 2024-2-8T23:59:21.868+8:0
+date: 2024-2-8 13:26:19
 tags:
   - 经济学
 cover: https://s2.loli.net/2024/03/18/Rha6FU1jTzDJ9OV.jpg

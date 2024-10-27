@@ -1,8 +1,8 @@
 ---
 title: 我们这一代人的困惑
 abbrlink: generational-dilemmas
-date: 2016-08-20T23:39:42.507568+08:00
-updated: 2024-01-20T23:44:04.879+08:00
+date: 2016-08-20 23:39:42 
+updated: 2024-01-20 23:44:04 
 categories:
   - 转载
 tags:
