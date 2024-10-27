@@ -65,12 +65,11 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </dl>
             </div>
           </header>
-          {/* 文章内容和作者信息 */}
-          <div className="pb-8 pt-0 transition-colors lg:grid lg:grid-cols-5 lg:gap-x-6">
-
+          {/* 左右结构 */}
+          <div className="pb-8 pt-0 transition-colors lg:grid lg:grid-cols-12 lg:gap-x-6">
             {/* 文章主题信息 */}
-            <div className="divide-y divide-gray-200 pt-0 pb-8 transition-colors dark:divide-gray-700 lg:col-span-4">
-              <div id="article-content" className="prose max-w-none pb-8 pt-10 
+            <div className="divide-y divide-gray-200 pt-0 pb-8 transition-colors dark:divide-gray-700 lg:col-span-9">
+              <div id="article-content" className="prose max-w-none pb-8 pt-0 pe-10 
               dark:prose-invert prose-img:rounded-lg prose-h2:relative prose-h2:pb-3">
                 <div>
                   {children}
@@ -121,9 +120,8 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
             </div>
             {/* 侧边栏 */}
-            <aside>
-              <div className="divide-gray-200 text-sm font-medium leading-5
-               dark:divide-gray-700 xl:col-start-1 xl:row-start-1 xl:divide-y">
+            <aside className="lg:col-span-3">
+              <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-1 xl:divide-y">
                  
                 <dl className="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
                   <dt className="sr-only">Authors</dt>
@@ -165,7 +163,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   </dd>
                 </dl>
               </div>
-              <div className="hidden lg:sticky lg:top-10 lg:col-span-1 lg:block">
+              <div className="hidden lg:sticky lg:top-10 lg:block">
                 <TableOfContents source={toc} />
 
                 <div className="pt-4 xl:pt-8">
