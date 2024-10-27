@@ -19,12 +19,12 @@ export default function Home2({ posts }) {
     let index = 0
     const timer = setInterval(() => {
       if (index < fullText.length) {
-        setDisplayText((prev) => prev + fullText.charAt(index))
+        setDisplayText(fullText.slice(0, index + 1)) // 修改这一行
         index++
       } else {
         clearInterval(timer)
       }
-    }, 50) // 每个字符之间的延迟时间（毫秒）
+    }, 50)
 
     return () => clearInterval(timer)
   }, [])
@@ -76,7 +76,7 @@ export default function Home2({ posts }) {
                     </p>
                     
                     <div className="flex justify-between items-center text-sm">
-                      <time className="text-gray-500 dark:text-gray-400">
+                      <time className="text-primary-500 dark:text-primary-400">
                         {formatDate(date, siteMetadata.locale)}
                       </time> 
                     </div>
