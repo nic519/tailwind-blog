@@ -93,9 +93,13 @@ function createSearchIndex(allBlogs) {
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
-  filePathPattern: 'blog/*.{md,mdx}',  // 匹配所有的 .md 文件
+  filePathPattern: 'blog/*.{md,mdx}',
   contentType: 'mdx',
   fields: {
+    cover: { 
+      type: 'string',  // 添加 cover 字段
+      required: false  // 设置为可选字段
+    },
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' }, default: [] },
@@ -123,7 +127,7 @@ export const Blog = defineDocumentType(() => ({
         datePublished: doc.date,
         dateModified: doc.lastmod || doc.date,
         description: doc.summary,
-        image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
+        image: doc.cover || doc.images?.[0] || siteMetadata.socialBanner, // 更新图片优先级
         url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
       }),
     },
