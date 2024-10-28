@@ -46,7 +46,8 @@ export default function Home2({ posts }) {
             const { slug, date, title, summary, tags, cover } = post
             
             return (
-              <article key={slug} className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800">
+              <article key={slug} className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-xl
+               transition-all duration-300 bg-white dark:bg-gray-800">
                 <Link href={`/blog/${slug}`} className="block">
                   {/* 图片容器 */}
                   <div className="overflow-hidden relative h-64 w-full">
@@ -56,11 +57,12 @@ export default function Home2({ posts }) {
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/90 dark:from-gray-800/90 from-0% via-transparent via-60%"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/90 dark:from-gray-800/90 from-0% 
+                    via-transparent via-60%"></div>
                   </div>
                   
                   {/* 内容区域 */}
-                  <div className="relative p-6 -mt-16 z-10"> 
+                  <div className="relative p-6 -mt-16 z-1"> 
                     <div className="flex flex-wrap gap-2 mb-3">
                       {tags.map((tag) => (
                         <Tag key={tag} text={tag} />
