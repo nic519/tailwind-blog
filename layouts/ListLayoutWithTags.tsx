@@ -88,8 +88,10 @@ export default function ListLayoutWithTags({
           <aside>
             {/* <div className="hidden lg:sticky  min-w-[280px] max-w-[280px] 
              rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 lg:col-span-1 lg:block"> */}
-            <div className="hidden lg:sticky lg:top-10 lg:col-span-1 lg:block min-w-[280px] max-w-[280px] 
-             rounded bg-gray-50 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40">
+            <div
+              className="hidden min-w-[280px] max-w-[280px] rounded bg-gray-50 shadow-md dark:bg-gray-900/70 
+             dark:shadow-gray-800/40 lg:sticky lg:top-10 lg:col-span-1 lg:block"
+            >
               <div className="px-6 py-4">
                 {pathname.startsWith('/blog') ? (
                   <h3 className="font-bold uppercase text-primary-500">All Posts</h3>

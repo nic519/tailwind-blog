@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
@@ -46,17 +46,16 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               <dl className="space-y-10">
                 <div className="flex flex-wrap items-center justify-between">
                   <div className="flex flex-wrap items-center">
-                  
-                    {tags && tags.map((tag) => (
-                      <Tag key={tag} text={tag} />
-                    ))}
+                    {tags && tags.map((tag) => <Tag text={tag} key={tag} />)}
 
                     <span className="mx-2">-</span>
 
-                    <time dateTime={date} className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                    <time
+                      dateTime={date}
+                      className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"
+                    >
                       {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                     </time>
-                    
                   </div>
                 </div>
                 <div>
@@ -68,15 +67,16 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
           {/* 左右结构 */}
           <div className="pb-8 pt-0 transition-colors lg:grid lg:grid-cols-12 lg:gap-x-6">
             {/* 文章主题信息 */}
-            <div className="divide-y divide-gray-200 pt-0 pb-8 transition-colors dark:divide-gray-700 lg:col-span-9">
-              <div id="article-content" className="prose max-w-none pb-8 pt-0 pe-10 
-              dark:prose-invert prose-img:rounded-lg prose-h2:relative prose-h2:pb-3
+            <div className="divide-y divide-gray-200 pb-8 pt-0 transition-colors dark:divide-gray-700 lg:col-span-9">
+              <div
+                id="article-content"
+                className="prose max-w-none pb-8 pe-10 pt-0 
+              dark:prose-invert prose-h2:relative prose-h2:pb-3 prose-blockquote:border-primary-500
+              prose-strong:text-primary-500
               prose-li:marker:text-primary-500
-              prose-blockquote:border-primary-500
-              prose-strong:text-primary-500">
-                <div>
-                  {children}
-                </div>
+              prose-img:rounded-lg"
+              >
+                <div>{children}</div>
               </div>
               <div className="pb-6 pt-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(path)} rel="nofollow">
@@ -120,12 +120,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   <Comments slug={slug} />
                 </div>
               )}
-
             </div>
             {/* 侧边栏 */}
             <aside className="lg:col-span-3">
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-1 xl:divide-y">
-                 
                 <dl className="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
                   <dt className="sr-only">Authors</dt>
                   <dd>
@@ -158,9 +156,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                               )}
                             </dd>
                           </dl>
-
                         </li>
-
                       ))}
                     </ul>
                   </dd>
@@ -181,8 +177,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </div>
             </aside>
             {/* 页脚 */}
-            <footer>
-            </footer>
+            <footer></footer>
           </div>
         </div>
       </article>
