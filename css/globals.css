@@ -4,18 +4,23 @@
 
 @layer base {
   :root {
-    --main-gradient: linear-gradient(to right, theme('colors.primary.500'), #ef4444);
+    --main-gradient: linear-gradient(
+      to right,
+      theme('colors.primary.500'),
+      #ef4444
+    );
   }
 }
 
 @layer components {
-  .prose h2, .prose h3 {
+  .prose h2,
+  .prose h3 {
     position: relative;
     padding-bottom: 0.75rem;
   }
 
-  .prose h2::after  {
-    content: "";
+  .prose h2::after {
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -26,7 +31,7 @@
   }
 
   .prose h3::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;

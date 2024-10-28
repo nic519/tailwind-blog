@@ -82,7 +82,7 @@ module.exports = () => {
           hostname: 's2.loli.net',
           port: '',
           pathname: '/**',
-        }
+        },
       ],
       unoptimized,
     },

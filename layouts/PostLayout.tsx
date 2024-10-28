@@ -31,7 +31,13 @@ interface LayoutProps {
   children: ReactNode
 }
 
-export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
+export default function PostLayout({
+  content,
+  authorDetails,
+  next,
+  prev,
+  children,
+}: LayoutProps) {
   const { filePath, path, slug, date, title, tags, toc } = content
   const basePath = path.split('/')[0]
   // console.log('toc=', toc)
@@ -54,7 +60,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                       dateTime={date}
                       className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"
                     >
-                      {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
+                      {new Date(date).toLocaleDateString(
+                        siteMetadata.locale,
+                        postDateTemplate
+                      )}
                     </time>
                   </div>
                 </div>
@@ -129,7 +138,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   <dd>
                     <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
                       {authorDetails.map((author) => (
-                        <li className="flex items-center space-x-2" key={author.name}>
+                        <li
+                          className="flex items-center space-x-2"
+                          key={author.name}
+                        >
                           {author.avatar && (
                             <Image
                               src={author.avatar}
@@ -141,7 +153,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           )}
                           <dl className="whitespace-nowrap text-sm font-medium leading-5">
                             <dt className="sr-only">Name</dt>
-                            <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
+                            <dd className="text-gray-900 dark:text-gray-100">
+                              {author.name}
+                            </dd>
                             <dt className="sr-only">Twitter</dt>
                             <dd>
                               {author.twitter && (

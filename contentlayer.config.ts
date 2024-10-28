@@ -1,4 +1,8 @@
-import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer2/source-files'
+import {
+  defineDocumentType,
+  ComputedFields,
+  makeSource,
+} from 'contentlayer2/source-files'
 import { writeFileSync } from 'fs'
 import readingTime from 'reading-time'
 import { slug } from 'github-slugger'
@@ -55,7 +59,7 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) => doc._raw.sourceFilePath,
   },
-  toc: { type: 'json', resolve: (doc) => extractTocHeadings(doc.body.raw) }
+  toc: { type: 'json', resolve: (doc) => extractTocHeadings(doc.body.raw) },
 }
 
 /**
@@ -96,9 +100,9 @@ export const Blog = defineDocumentType(() => ({
   filePathPattern: 'blog/*.{md,mdx}',
   contentType: 'mdx',
   fields: {
-    cover: { 
-      type: 'string',  // 添加 cover 字段
-      required: false  // 设置为可选字段
+    cover: {
+      type: 'string', // 添加 cover 字段
+      required: false, // 设置为可选字段
     },
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
@@ -111,9 +115,10 @@ export const Blog = defineDocumentType(() => ({
     layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
-    type: {  // 添加一个 type 字段
+    type: {
+      // 添加一个 type 字段
       type: 'string',
-      default: 'Blog',  // 默认值为 'Blog'
+      default: 'Blog', // 默认值为 'Blog'
     },
   },
   computedFields: {
@@ -155,7 +160,7 @@ export const Authors = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'data',
   documentTypes: [Blog, Authors],
-  
+
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
