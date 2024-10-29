@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 const MAX_DISPLAY = 50
-const DEFAULT_COVER = '/static/images/default-cover.jpg' // 添加默认封面图片路径
+const DEFAULT_COVER = '/static/images/default-cover.jpg' // 图片应该放在 public/images/ 目录下
 
 export default function Home2({ posts }) {
   const [displayText, setDisplayText] = useState('')
