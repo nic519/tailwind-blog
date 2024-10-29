@@ -56,7 +56,7 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
 }
 
 interface TOCProps {
-  source: string
+  source: Array<{ value: string; depth: number }>
   isMobile?: boolean
 }
 
