@@ -3,7 +3,11 @@ import { useState } from 'react'
 import TableOfContents from './TableOfContents'
 
 interface MobileTOCProps {
-  source: string
+    source: Array<{
+        value: string
+        url: string
+        depth: number
+      }>,
   buttonPosition?: {
     bottom?: string
     right?: string
@@ -68,7 +72,7 @@ export default function MobileTOC({
             maxHeight,
             width
           }}>
-            <TableOfContents source={source} />
+            <TableOfContents source={source} isMobile={true} />
           </div>
         </>
       )}

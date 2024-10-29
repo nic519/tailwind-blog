@@ -2,6 +2,7 @@
 'use client'
 import clsx from 'clsx'
 import GithubSlugger from 'github-slugger'
+import { list } from 'postcss'
 // import { useTranslation } from 'next-i18next';
 import { useEffect, useRef, useState } from 'react'
 
@@ -56,15 +57,18 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
 }
 
 interface TOCProps {
-  source: Array<{ value: string; depth: number }>
+  source: Array<{
+    value: string
+    url: string
+    depth: number
+  }>
   isMobile?: boolean
 }
 
 export default function TableOfContents({ source, isMobile = false }: TOCProps) {
-  const tocData = source
   const slugger = new GithubSlugger()
-
-  const headings = tocData.map((item) => {
+  console.log('source=', source)
+  const headings = source.map((item) => {
     return {
       text: item.value,
       level: item.depth,
