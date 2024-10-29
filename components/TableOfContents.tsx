@@ -55,11 +55,12 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
   }, [setActiveId])
 }
 
-type Props = {
-  source: { value: string; url: string; depth: number }[]
+interface TOCProps {
+  source: string
+  isMobile?: boolean
 }
 
-const TableOfContents = ({ source }: Props) => {
+export default function TableOfContents({ source, isMobile = false }: TOCProps) {
   const tocData = source
   const slugger = new GithubSlugger()
 
@@ -91,7 +92,10 @@ const TableOfContents = ({ source }: Props) => {
   }
 
   return (
-    <div className="mt-10 rounded bg-gray-50 px-4 py-2 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40">
+    <div className={clsx(
+      'text-sm',
+      isMobile ? 'max-h-[50vh] overflow-auto' : ''
+    )}>
       <p className="mb-5 text-lg font-semibold text-gray-900 transition-colors dark:text-gray-100">
         目录
       </p>
@@ -118,5 +122,3 @@ const TableOfContents = ({ source }: Props) => {
     </div>
   )
 }
-
-export default TableOfContents
