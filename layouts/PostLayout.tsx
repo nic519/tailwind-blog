@@ -79,11 +79,12 @@ export default function PostLayout({
             <div className="divide-y divide-gray-200 pb-8 pt-0 transition-colors dark:divide-gray-700 lg:col-span-9">
               <div
                 id="article-content"
-                className="prose max-w-none pb-8 pe-10 pt-0 
-              dark:prose-invert prose-h2:relative prose-h2:pb-3 prose-blockquote:border-primary-500
-              prose-strong:text-primary-500
-              prose-li:marker:text-primary-500
-              prose-img:rounded-lg"
+                className="prose max-w-none pb-8 lg:pe-10 pt-0 
+                dark:prose-invert prose-h2:relative prose-h2:pb-3 prose-blockquote:border-primary-500
+                prose-strong:text-primary-500
+                prose-li:marker:text-primary-500
+                prose-img:rounded-lg
+                w-full"
               >
                 <div>{children}</div>
               </div>
@@ -131,7 +132,7 @@ export default function PostLayout({
               )}
             </div>
             {/* 侧边栏 */}
-            <aside className="lg:col-span-3">
+            <aside className="lg:col-span-3 hidden lg:block">
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-1 xl:divide-y">
                 <dl className="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
                   <dt className="sr-only">Authors</dt>
@@ -176,7 +177,7 @@ export default function PostLayout({
                   </dd>
                 </dl>
               </div>
-              <div className="hidden lg:sticky lg:top-10 lg:block">
+              <div className=" lg:sticky lg:top-10 lg:block">
                 <TableOfContents source={toc} />
 
                 <div className="pt-4 xl:pt-8">
