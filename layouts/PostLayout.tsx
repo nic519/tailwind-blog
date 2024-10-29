@@ -12,6 +12,8 @@ import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import TableOfContents from '@/components/TableOfContents'
 import Image from 'next/image'
 import 'css/globals.css'
+import MobileTOC from '@/components/MobileTOC'
+
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`
@@ -41,7 +43,6 @@ export default function PostLayout({
   const { filePath, path, slug, date, title, tags, toc } = content
   const basePath = path.split('/')[0]
   // console.log('toc=', toc)
-  const [showMobileToc, setShowMobileToc] = useState(false)
 
   return (
     <SectionContainer>
@@ -185,50 +186,13 @@ export default function PostLayout({
               </div>
             </aside>
             {/* 移动端 TOC */}
-            <div className="fixed bottom-20 right-4 z-50 lg:hidden">
-              <button 
-                onClick={() => setShowMobileToc(prev => !prev)}
-                className="flex h-12 w-12 items-center justify-center rounded-full 
-                bg-primary-500 text-white shadow-lg transition-all hover:bg-primary-600"
-                aria-label="目录"
-              >
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className="h-6 w-6" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M4 6h16M4 12h16M4 18h7" 
-                  />
-                </svg>
-              </button>
-              
-              {/* 移动端 TOC 弹出层 */}
-              {showMobileToc && (
-                <>
-                  <div 
-                    className="fixed inset-0 bg-gray-600 bg-opacity-50 transition-opacity duration-200"
-                    onClick={() => setShowMobileToc(false)}
-                  />
-                  <div 
-                    className={`
-                      fixed bottom-36 right-4 max-h-[60vh] w-72 
-                      transform overflow-auto rounded-lg bg-white p-4 
-                      shadow-xl transition-all duration-200
-                      dark:bg-gray-900
-                      ${showMobileToc ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
-                    `}
-                  >
-                    <TableOfContents source={toc} />
-                  </div>
-                </>
-              )}
-            </div>
+            <MobileTOC 
+              source={toc}
+              buttonPosition={{ bottom: '6rem', right: '1.5rem' }}
+              panelPosition={{ bottom: '10rem', right: '1.5rem' }}
+              maxHeight="70vh"
+              width="20rem"
+            />
             {/* 页脚 */}
             <footer></footer>
           </div>
