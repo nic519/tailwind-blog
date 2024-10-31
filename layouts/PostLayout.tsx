@@ -11,7 +11,7 @@ import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import TableOfContents from '@/components/TableOfContents'
 import Image from 'next/image'
-import 'css/globals.css'
+import 'css/post.css'
 import MobileTOC from '@/components/MobileTOC'
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`

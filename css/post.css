@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --main-gradient: linear-gradient(
+      to right,
+      theme('colors.primary.500'),
+      #ef4444
+    );
+  }
+}
+
+@layer components {
+  .prose h2,
+  .prose h3 {
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  .prose h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.2rem;
+    width: 8rem;
+    border-radius: 9999px;
+    background: var(--main-gradient);
+  }
+
+  .prose h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.2rem;
+    width: 4rem;
+    border-radius: 9999px;
+    background: var(--main-gradient);
+  }
+}
