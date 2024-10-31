@@ -13,6 +13,7 @@ import TableOfContents from '@/components/TableOfContents'
 import Image from 'next/image'
 import 'css/post.css'
 import MobileTOC from '@/components/MobileTOC'
+import GradientBackground from '@/components/GradientBackground'
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
@@ -45,6 +46,8 @@ export default function PostLayout({
   // console.log('toc=', toc)
 
   return (
+    <GradientBackground enableGrid={true} className="min-h-screen">
+     
     <SectionContainer>
       <ScrollTopAndComment />
       <article>
@@ -199,5 +202,6 @@ export default function PostLayout({
         </div>
       </article>
     </SectionContainer>
+    </GradientBackground>
   )
 }

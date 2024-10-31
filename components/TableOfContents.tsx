@@ -98,6 +98,7 @@ export default function TableOfContents({ source, isMobile = false }: TOCProps) 
   return (
     <div className={clsx(
       'text-sm',
+      'rounded-xl backdrop-blur-md bg-white/70 dark:bg-gray-950/20 p-6 shadow-lg ring-1 ring-black/5 dark:ring-white/5',
       isMobile ? 'max-h-[50vh] overflow-auto' : ''
     )}>
       <p className="mb-5 text-lg font-semibold text-gray-900 transition-colors dark:text-gray-100">

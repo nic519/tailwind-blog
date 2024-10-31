@@ -5,6 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import { useState, useEffect, useCallback } from 'react'
 import PostCard from '@/components/PostCard'
+import GradientBackground from '@/components/GradientBackground'
 
 const MAX_DISPLAY = 50
 
@@ -27,26 +28,17 @@ export default function Home2({ posts }) {
   }, [])
 
   return (
-    <>
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-300 dark:bg-purple-900/30 rounded-full mix-blend-multiply dark:mix-blend-soft-light blur-3xl animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-yellow-200 dark:bg-yellow-900/30 rounded-full mix-blend-multiply dark:mix-blend-soft-light blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-pink-200 dark:bg-pink-900/30 rounded-full mix-blend-multiply dark:mix-blend-soft-light blur-3xl animate-blob animation-delay-4000"></div>
-        <div className="absolute inset-0 bg-grid-slate-800 dark:bg-grid-slate-200 bg-[size:40px_40px] dark:bg-[size:30px_30px] opacity-5"></div>
+    <GradientBackground>
+      <div className="space-y-2 pb-8 pt-6 md:space-y-5">
+        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400 bg-transparent">
+          {displayText}
+        </p>
       </div>
-
-      <div className="relative">
-        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400 bg-transparent">
-            {displayText}
-          </p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
-        </div>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {!posts.length && 'No posts found.'}
+        {posts.slice(0, MAX_DISPLAY).map((post) => (
+          <PostCard key={post.slug} post={post} />
+        ))}
       </div>
 
       {posts.length > MAX_DISPLAY && (
@@ -65,6 +57,6 @@ export default function Home2({ posts }) {
           <NewsletterForm />
         </div>
       )}
-    </>
+    </GradientBackground>
   )
 }
