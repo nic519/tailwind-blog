@@ -51,104 +51,105 @@ export default function PostLayout({
     <SectionContainer>
       <ScrollTopAndComment />
       <article>
-        <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
+        <div className="xl:space-y-0">
           {/* 文章头部 */}
           <header className="pt-6 xl:pb-6">
-            <div className="space-y-1">
-              <dl className="space-y-10">
+            <div className="space-y-10">
                 <div className="flex flex-wrap items-center justify-between">
-                  <div className="flex flex-wrap items-center">
+                  <div className="flex flex-wrap items-center gap-3">
                     {tags && tags.map((tag) => <Tag text={tag} key={tag} />)}
-
-                    <span className="mx-2">-</span>
-
+                    <span className="text-gray-400 dark:text-gray-500">·</span>
                     <time
                       dateTime={date}
-                      className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"
+                      className="text-base font-medium text-gray-500 dark:text-gray-400"
                     >
-                      {new Date(date).toLocaleDateString(
-                        siteMetadata.locale,
-                        postDateTemplate
-                      )}
+                      {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                     </time>
                   </div>
                 </div>
-                <div>
-                  <PageTitle>{title}</PageTitle>
+                <div className="relative pb-8">
+                  <div className="article-title-wrapper">
+                    <PageTitle>{title}</PageTitle>
+                  </div>
+                  <div className="absolute bottom-0 left-0 h-1 w-48 rounded-full " />
                 </div>
-              </dl>
             </div>
           </header>
-          {/* 左右结构 */}
-          <div className="pb-8 pt-0 transition-colors lg:grid lg:grid-cols-12 lg:gap-x-6">
-            {/* 文章主题信息 */}
-            <div className="divide-y divide-gray-200 pb-8 pt-0 transition-colors dark:divide-gray-700 lg:col-span-9">
-              <div
-                id="article-content"
-                className="prose max-w-none pb-8 lg:pe-10 pt-0 
-                dark:prose-invert prose-h2:relative prose-h2:pb-3 prose-blockquote:border-primary-500
+
+          {/* 文章主体 */}
+          <div className="pb-8 pt-0 lg:grid lg:grid-cols-12 lg:gap-x-8">
+            {/* 文章内容区 */}
+            <div className="lg:col-span-9">
+              <div id="article-content" 
+                className="prose max-w-none pb-8 pt-0 
+                dark:prose-invert prose-h2:relative prose-h2:pb-3 
+                prose-blockquote:border-primary-500
                 prose-strong:text-primary-500
                 prose-li:marker:text-primary-500
                 prose-img:rounded-lg
                 w-full"
               >
-                <div>{children}</div>
-              </div>
-              <div className="pb-6 pt-6 text-sm text-gray-700 dark:text-gray-300">
-                <Link href={discussUrl(path)} rel="nofollow">
-                  Discuss on Twitter
-                </Link>
-                {` • `}
-                <Link href={editUrl(filePath)}>View on GitHub</Link>
+                {children}
               </div>
 
-              {(next || prev) && (
-                <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
-                  {prev && prev.path && (
-                    <div>
-                      <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                        Previous Article
-                      </h2>
-                      <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Link href={`/${prev.path}`}>{prev.title}</Link>
-                      </div>
-                    </div>
-                  )}
-                  {next && next.path && (
-                    <div>
-                      <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                        Next Article
-                      </h2>
-                      <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Link href={`/${next.path}`}>{next.title}</Link>
-                      </div>
-                    </div>
-                  )}
+              {/* 文章导航和评论区 */}
+              <div className="border-t border-gray-200/50 dark:border-gray-800/50">
+                {/* 社交链接 */}
+                <div className="py-6 text-sm text-gray-700 dark:text-gray-300">
+                  <Link href={discussUrl(path)} rel="nofollow" className="hover:text-primary-500">
+                    Discuss on Twitter
+                  </Link>
+                  {` • `}
+                  <Link href={editUrl(filePath)} className="hover:text-primary-500">
+                    View on GitHub
+                  </Link>
                 </div>
-              )}
 
-              {/* 评论 */}
-              {siteMetadata.comments && (
-                <div
-                  className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300"
-                  id="comment"
-                >
-                  <Comments slug={slug} />
-                </div>
-              )}
+                {/* 上一篇/下一篇导航 */}
+                {(next || prev) && (
+                  <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
+                    {prev && prev.path && (
+                      <div>
+                        <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                          Previous Article
+                        </h2>
+                        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                          <Link href={`/${prev.path}`}>{prev.title}</Link>
+                        </div>
+                      </div>
+                    )}
+                    {next && next.path && (
+                      <div>
+                        <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                          Next Article
+                        </h2>
+                        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                          <Link href={`/${next.path}`}>{next.title}</Link>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* 评论区 */}
+                {siteMetadata.comments && (
+                  <div className="border-t border-gray-200/50 dark:border-gray-800/50 py-8" id="comment">
+                    <Comments slug={slug} />
+                  </div>
+                )}
+              </div>
             </div>
+
             {/* 侧边栏 */}
-            <aside className="lg:col-span-3 hidden lg:block">
-              <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-1 xl:divide-y">
-                <dl className="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
+            <aside className="lg:col-span-3">
+              
+                {/* 作者信息 */}
+                <dl className="pb-8 xl:pt-0">
                   <dt className="sr-only">Authors</dt>
                   <dd>
                     <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
                       {authorDetails.map((author) => (
-                        <li
-                          className="flex items-center space-x-2"
-                          key={author.name}
-                        >
+                        <li className="flex items-center space-x-2" key={author.name}>
                           {author.avatar && (
                             <Image
                               src={author.avatar}
@@ -170,8 +171,7 @@ export default function PostLayout({
                                   href={author.twitter}
                                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                                 >
-                                  {author.twitter
-                                    .replace('https://twitter.com/', '@')
+                                  {author.twitter.replace('https://twitter.com/', '@')
                                     .replace('https://x.com/', '@')}
                                 </Link>
                               )}
@@ -182,12 +182,13 @@ export default function PostLayout({
                     </ul>
                   </dd>
                 </dl>
-              </div>
-              <div className="lg:sticky mt-6 lg:top-10 lg:block">
+                
                 {/* 桌面端 TOC */}
-                <TableOfContents source={toc} />
-              </div>
+                <div className="hidden lg:sticky lg:top-10 rounded-xl backdrop-blur-md bg-white/70 dark:bg-gray-950/20 py-4 px-6 shadow-lg ring-1 ring-black/5 dark:ring-white/5">
+                  <TableOfContents source={toc} />
+                </div>
             </aside>
+
             {/* 移动端 TOC */}
             <MobileTOC 
               source={toc}
@@ -196,8 +197,6 @@ export default function PostLayout({
               maxHeight="70vh"
               width="20rem"
             />
-            {/* 页脚 */}
-            <footer></footer>
           </div>
         </div>
       </article>

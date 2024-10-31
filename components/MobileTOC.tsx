@@ -1,5 +1,4 @@
-'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TableOfContents from './TableOfContents'
 
 interface MobileTOCProps {
@@ -29,6 +28,8 @@ export default function MobileTOC({
 }: MobileTOCProps) {
   const [showMobileToc, setShowMobileToc] = useState(false)
 
+  
+
   return (
     <div className="fixed z-50 lg:hidden" style={{ 
       bottom: buttonPosition.bottom, 
@@ -37,7 +38,14 @@ export default function MobileTOC({
       <button 
         onClick={() => setShowMobileToc(prev => !prev)}
         className="flex h-12 w-12 items-center justify-center rounded-full 
-        bg-primary-500 text-white shadow-lg transition-all hover:bg-primary-600"
+        text-gray-700 dark:text-white transition-all duration-300
+        backdrop-blur-[8px] 
+        shadow-[0_4px_12px_rgba(0,0,0,0.15),inset_0_1px_2px_rgba(255,255,255,0.4)]
+        hover:shadow-[0_6px_16px_rgba(0,0,0,0.2),inset_0_1px_2px_rgba(255,255,255,0.5)]
+        hover:transform hover:scale-105 active:scale-95
+        border border-white/10 dark:border-white/5
+        bg-gradient-to-br from-white/95 to-white/85
+        dark:from-white/10 dark:to-white/5"
         aria-label="目录"
       >
         <svg 
