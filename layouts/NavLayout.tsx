@@ -3,7 +3,7 @@ import { useState } from 'react'
 import NavTOC from '@/components/nav/NavTOC'
 import NavCard from '@/components/nav/NavCard'
 import GradientBackground from '@/components/GradientBackground'
-import { generateUniqueId } from '@/components/nav/generateUniqueId'
+import { generateUniqueId } from '@/components/nav/GenerateUniqueId'
 
 export default function NavLayout({ navItems }: { navItems: NavData }) {
     // 使用 Map 或对象来存储每个 section 的展开状态

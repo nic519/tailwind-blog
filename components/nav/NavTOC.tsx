@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { type NavData } from '@/types/nav'
-import { generateUniqueId } from '@/components/nav/generateUniqueId'
+import { generateUniqueId } from './GenerateUniqueId'
 
 interface NavTOCProps {
   navItems: NavData
