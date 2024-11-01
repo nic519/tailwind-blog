@@ -93,33 +93,35 @@ export default function NavTOC({ navItems }: NavTOCProps) {
           <h2 className="text-sm font-bold text-primary-400 dark:text-primary-500 my-4">
             {category.title}
           </h2>
-          {category.nav[0].nav.map(section => {
-            const sectionId = generateUniqueId(category.title, section.title)
-            return (
-              <button
-                key={sectionId}
-                data-section={sectionId}
-                onClick={() => scrollToSection(sectionId)}
-                className={`flex w-full items-center  px-3 py-2 rounded-lg text-left text-sm
-                  transition-colors duration-200
-                  ${activeId === sectionId 
-                    ? 'bg-primary-500/10 text-primary-500' 
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800/50'
-                  }`}
-              >
-                <span>{section.title}</span>
-                {section.nav?.length && (
-                  <span className={`ml-auto text-xs ${
-                    activeId === sectionId
-                    ? 'text-primary-500/70'
-                    : 'text-gray-400 dark:text-gray-500'
-                  }`}>
-                    × {section.nav.length}
-                  </span>
-                )}
-              </button>
-            )
-          })}
+          {category.nav.flatMap(navGroup => 
+            navGroup.nav.map(section => {
+              const sectionId = generateUniqueId(category.title, section.title)
+              return (
+                <button
+                  key={sectionId}
+                  data-section={sectionId}
+                  onClick={() => scrollToSection(sectionId)}
+                  className={`flex w-full items-center px-3 py-2 rounded-lg text-left text-sm
+                    transition-colors duration-200 ${
+                      activeId === sectionId 
+                        ? 'bg-primary-500/10 text-primary-500' 
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800/50'
+                    }`}
+                >
+                  <span>{section.title}</span>
+                  {section.itemNav && (
+                    <span className={`ml-auto text-xs ${
+                      activeId === sectionId
+                        ? 'text-primary-500/70'
+                        : 'text-gray-400 dark:text-gray-500'
+                    }`}>
+                      × {section.itemNav.length}
+                    </span>
+                  )}
+                </button>
+              )
+            })
+          )}
         </div>
       ))}
     </div>

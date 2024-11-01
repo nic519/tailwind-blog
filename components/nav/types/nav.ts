@@ -12,9 +12,20 @@ interface NavLink {
   id: number
 }
 
-interface NavGroup {
+interface NavSubGroup {
   title: string
-  nav: (NavGroup | NavLink)[]
+  itemNav: NavLink[]
+  createdAt?: string
 }
 
-export type NavData = NavGroup[] 
+interface NavGroup {
+  title: string
+  nav: NavSubGroup[]
+  createdAt?: string
+}
+
+export type NavData = {
+  title: string
+  nav: NavGroup[]
+  createdAt?: string
+}[] 
