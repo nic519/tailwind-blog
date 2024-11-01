@@ -23,7 +23,7 @@ export default function NavCard({ name, desc, url, icon, urls }: NavCardProps) {
           <img 
             src={icon} 
             alt="" 
-            className="w-8 h-8 rounded-lg"
+            className="h-8 max-w-12 rounded-lg"
             loading="lazy"
           />
         )}
@@ -36,28 +36,7 @@ export default function NavCard({ name, desc, url, icon, urls }: NavCardProps) {
           {desc}
         </p>
       )}
-      <div className="flex justify-between items-center mt-4">
-        <div className="flex gap-2">
-          {urls && Object.keys(urls).length > 0 && (
-            <span className="px-2 py-1 text-xs bg-primary-500/10 text-primary-500 
-              rounded-full font-medium">
-              相关链接
-            </span>
-          )}
-        </div>
-        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button 
-            onClick={(e) => {
-              e.preventDefault()
-              navigator.clipboard.writeText(url)
-            }}
-            className="p-1.5 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
-          >
-            <span className="sr-only">复制</span>
-            {/* 添加复制图标 */}
-          </button>
-        </div>
-      </div>
+       
     </a>
   )
 } 

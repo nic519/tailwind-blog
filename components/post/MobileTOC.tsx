@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import TableOfContents from './TableOfContents'
+import TableOfContents from '@/components/post/TableOfContents'
 
 interface MobileTOCProps {
     source: Array<{

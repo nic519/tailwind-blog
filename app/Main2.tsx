@@ -4,7 +4,7 @@ import Link from '@/components/Link'
 import siteMetadata from '@/data/siteMetadata'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import { useState, useEffect, useCallback } from 'react'
-import PostCard from '@/components/PostCard'
+import PostCard from '@/components/post/PostCard'
 import GradientBackground from '@/components/GradientBackground'
 
 const MAX_DISPLAY = 50
