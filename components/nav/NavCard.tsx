@@ -16,9 +16,9 @@ export default function NavCard({ name, desc, url, icon, urls }: NavCardProps) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group backdrop-blur-md bg-white/70 dark:bg-gray-950/20 
-        rounded-xl p-4 shadow-lg ring-1 ring-black/5 dark:ring-white/5
-        hover:shadow-xl transition-all duration-300"
+      className="group backdrop-blur-md bg-white/60 dark:bg-gray-950/20 
+        rounded-lg p-4 shadow-sm ring-1 ring-black/5 dark:ring-white/5
+        hover:shadow-md transition-all duration-300"
     >
       <div className="flex items-center gap-3 mb-2">
         {icon && (

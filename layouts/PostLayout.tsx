@@ -7,8 +7,7 @@ import Link from '@/components/Link'
 import PageTitle from '@/components/post/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import Tag from '@/components/post/Tag'
-import siteMetadata from '@/data/siteMetadata'
-import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import siteMetadata from '@/data/siteMetadata' 
 import TableOfContents from '@/components/post/TableOfContents'
 import Image from 'next/image'
 import 'css/post.css'
@@ -49,7 +48,6 @@ export default function PostLayout({
     <GradientBackground enableGrid={true} className="min-h-screen">
      
     <SectionContainer>
-      <ScrollTopAndComment />
       <article>
         <div className="xl:space-y-0">
           {/* 文章头部 */}

@@ -1,4 +1,5 @@
 'use client'
+import { useState, useEffect } from 'react'
 
 interface GradientBackgroundProps {
   children: React.ReactNode
@@ -27,6 +28,20 @@ const GradientBackground = ({
   enableGrid = true,
   className = ''
 }: GradientBackgroundProps) => {
+  const [showScrollTop, setShowScrollTop] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <div className={`relative ${className}`}>
       {/* 背景容器 */}
@@ -47,6 +62,28 @@ const GradientBackground = ({
 
       {/* 內容 */}
       {children}
+
+      {/* 火箭按钮 */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 p-3 rounded-full bg-white/70 dark:bg-gray-800/70 
+          shadow-lg ring-1 ring-black/5 dark:ring-white/5 backdrop-blur-md
+          transition-all duration-300 hover:scale-110 z-50
+          ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
+        aria-label="回到顶部"
+      >
+        <svg 
+          className="w-6 h-6 text-gray-600 dark:text-gray-300" 
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M16 11L15.5 19M16 11C16 6.5 14.5 4 11.9999 2C9.5 4 8 6.5 8 11M16 11L18 12.5C19.259 13.4443 20 14.9262 20 16.5V19.4612C20 20.1849 19.2551 20.669 18.5939 20.375L15.5 19M8 11L8.5 19M8 11L6 12.5C4.74097 13.4443 4 14.9262 4 16.5V19.4612C4 20.1849 4.74485 20.669 5.40614 20.375L8.5 19M8.5 19H15.5M12 9V11" />
+        </svg>
+      </button>
     </div>
   )
 }
