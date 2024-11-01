@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { type NavData } from '@/types/nav'
+import { type NavData } from './types/nav'
 import { generateUniqueId } from './GenerateUniqueId'
 
 interface NavTOCProps {

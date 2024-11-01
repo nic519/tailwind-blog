@@ -1,4 +1,4 @@
-import { type NavData } from '@/types/nav'
+import { type NavData } from '@/components/nav/types/nav'
 import NavLayout from '@/layouts/NavLayout'
 import navData from '@/data/nav/db.json'
 
