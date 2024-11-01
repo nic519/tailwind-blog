@@ -1,0 +1,7 @@
+.nav-container {
+  @apply bg-white dark:bg-gray-900;
+}
+
+.nav-item {
+  @apply bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow;
+} 
