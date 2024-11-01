@@ -90,7 +90,7 @@ export default function NavTOC({ navItems }: NavTOCProps) {
       
       {navItems.map(category => (
         <div key={category.title} className="space-y-2">
-          <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 mt-4">
+          <h2 className="text-sm font-bold text-primary-400 dark:text-primary-500 my-4">
             {category.title}
           </h2>
           {category.nav[0].nav.map(section => {

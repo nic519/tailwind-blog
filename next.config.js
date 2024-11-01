@@ -75,14 +75,12 @@ module.exports = () => {
       remotePatterns: [
         {
           protocol: 'https',
-          hostname: 'picsum.photos',
+          hostname: '**',
         },
         {
-          protocol: 'https',
-          hostname: 's2.loli.net',
-          port: '',
-          pathname: '/**',
-        },
+          protocol: 'http',
+          hostname: '**',
+        }
       ],
       unoptimized,
     },

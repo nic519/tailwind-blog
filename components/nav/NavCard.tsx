@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 interface NavCardProps {
   name: string
   desc?: string
@@ -20,11 +22,17 @@ export default function NavCard({ name, desc, url, icon, urls }: NavCardProps) {
     >
       <div className="flex items-center gap-3 mb-2">
         {icon && (
-          <img 
+          <Image 
             src={icon} 
-            alt="" 
-            className="h-8 max-w-12 rounded-lg"
+            alt=""
+            width={32}
+            height={32} 
+            className="rounded-lg object-contain"
             loading="lazy"
+            onError={(e) => {
+              // 移除错误的图片元素
+              e.currentTarget.style.display = 'none'
+            }}
           />
         )}
         <h3 className="font-medium text-gray-900 dark:text-white group-hover:text-primary-500">
