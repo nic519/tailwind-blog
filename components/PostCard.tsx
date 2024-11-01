@@ -19,9 +19,13 @@ export default function PostCard({ post }: { post: Post }) {
   const { slug, date, title, summary, tags, cover } = post
 
   return (
-    <article className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800">
+    <article className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-xl 
+      transition-all duration-300 
+      backdrop-blur-md bg-white/80 dark:bg-gray-700/20 
+      border border-white/20 dark:border-gray-700/20
+      hover:bg-white/90 dark:hover:bg-gray-600/20">
       <Link href={`/blog/${slug}`} className="block">
-        <div className="overflow-hidden relative h-64 w-full">
+        <div className="overflow-hidden relative h-64 w-full ">
           <Image
             src={cover || DEFAULT_COVER}
             alt={title}
@@ -38,7 +42,7 @@ export default function PostCard({ post }: { post: Post }) {
             ))}
           </div>
 
-          <h2 className="text-xl font-bold pt-2 mb-3 text-gray-900 dark:text-gray-100 line-clamp-2">
+          <h2 className="text-xl font-bold pt-4 mb-3 text-gray-900 dark:text-gray-100 line-clamp-2">
             {title}
           </h2>
 

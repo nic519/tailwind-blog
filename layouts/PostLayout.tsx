@@ -184,7 +184,8 @@ export default function PostLayout({
                 </dl>
                 
                 {/* 桌面端 TOC */}
-                <div className="lg:sticky lg:top-10 rounded-xl backdrop-blur-md bg-white/70 dark:bg-gray-950/20 py-4 px-6 shadow-lg ring-1 ring-black/5 dark:ring-white/5">
+                <div className="lg:sticky lg:top-10 rounded-xl backdrop-blur-md
+                 bg-white/70 dark:bg-gray-950/20 py-4 px-6 shadow-lg ring-1 ring-black/5 dark:ring-white/5">
                   <TableOfContents source={toc} />
                 </div>
             </aside>
