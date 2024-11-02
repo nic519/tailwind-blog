@@ -191,8 +191,8 @@ export default function PostLayout({
             {/* 移动端 TOC */}
             <MobileTOC 
               source={toc}
-              buttonPosition={{ bottom: '6rem', right: '1.5rem' }}
-              panelPosition={{ bottom: '10rem', right: '1.5rem' }}
+              buttonPosition={{ bottom: '6rem', right: '1rem' }}
+              panelPosition={{ bottom: '10rem', right: '1rem' }}
               maxHeight="70vh"
               width="20rem"
             />

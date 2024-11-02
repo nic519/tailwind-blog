@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import TableOfContents from '@/components/post/TableOfContents'
 
 interface MobileTOCProps {
-    source: Array<{
-        value: string
-        url: string
-        depth: number
-      }>,
+  source: Array<{
+    value: string
+    url: string
+    depth: number
+  }>,
   buttonPosition?: {
     bottom?: string
     right?: string
@@ -21,36 +21,35 @@ interface MobileTOCProps {
 
 export default function MobileTOC({ 
   source,
-  buttonPosition = { bottom: '5rem', right: '1rem' },
+  buttonPosition = { bottom: '5rem', right: '2rem' },
   panelPosition = { bottom: '9rem', right: '1rem' },
   maxHeight = '60vh',
   width = '18rem'
 }: MobileTOCProps) {
   const [showMobileToc, setShowMobileToc] = useState(false)
 
-  
-
   return (
     <div className="fixed z-50 lg:hidden" style={{ 
       bottom: buttonPosition.bottom, 
       right: buttonPosition.right 
     }}>
+      {/* 统一按钮样式 */}
       <button 
         onClick={() => setShowMobileToc(prev => !prev)}
-        className="flex h-12 w-12 items-center justify-center rounded-full 
-        text-gray-700 dark:text-white transition-all duration-300
-        backdrop-blur-[8px] 
-        shadow-[0_4px_12px_rgba(0,0,0,0.15),inset_0_1px_2px_rgba(255,255,255,0.4)]
-        hover:shadow-[0_6px_16px_rgba(0,0,0,0.2),inset_0_1px_2px_rgba(255,255,255,0.5)]
-        hover:transform hover:scale-105 active:scale-95
-        border border-white/10 dark:border-white/5
-        bg-gradient-to-br from-white/95 to-white/85
-        dark:from-white/10 dark:to-white/5"
+        className={`p-3.5 
+          bg-gradient-to-r from-white/80 to-white/60
+          dark:from-gray-800/80 dark:to-gray-800/60
+          text-slate-600 dark:text-slate-200 
+          rounded-full shadow-lg backdrop-blur-md 
+          ring-1 ring-black/5 dark:ring-white/5
+          hover:shadow-indigo-500/20 hover:ring-indigo-500/50
+          active:scale-95 transform transition-all duration-200
+          ${showMobileToc ? 'rotate-90' : 'rotate-0'}`}
         aria-label="目录"
       >
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
-          className="h-6 w-6" 
+          className="h-5 w-5" 
           fill="none" 
           viewBox="0 0 24 24" 
           stroke="currentColor"
@@ -64,23 +63,38 @@ export default function MobileTOC({
         </svg>
       </button>
       
-      {/* 移动端 TOC 弹出层 */}
+      {/* 统一面板样式 */}
       {showMobileToc && (
         <>
-          <div className="fixed inset-0 bg-gray-600 bg-opacity-50" 
+          <div 
+            className="fixed inset-0 bg-black/20 dark:bg-black/50 backdrop-blur-sm z-40" 
             onClick={() => setShowMobileToc(false)} 
           />
-          <div className={`
-            fixed transform overflow-auto rounded-lg bg-white p-4 
-            shadow-xl transition-all duration-200 dark:bg-gray-900
-          `}
-          style={{ 
-            bottom: panelPosition.bottom,
-            right: panelPosition.right,
-            maxHeight,
-            width
-          }}>
-            <TableOfContents source={source} isMobile={true} />
+          <div 
+            className="fixed z-50 backdrop-blur-md bg-white/70 dark:bg-gray-950/20 
+              rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/5 
+              overflow-hidden"
+            style={{ 
+              bottom: panelPosition.bottom,
+              right: panelPosition.right,
+              maxHeight,
+              width
+            }}
+          >
+            <div className="p-4 overflow-y-auto [&::-webkit-scrollbar]:w-1.5
+              [&::-webkit-scrollbar-track]:bg-transparent
+              [&::-webkit-scrollbar-thumb]:bg-gray-200
+              [&::-webkit-scrollbar-thumb]:rounded-full
+              [&::-webkit-scrollbar-thumb]:border-2
+              [&::-webkit-scrollbar-thumb]:border-transparent
+              hover:[&::-webkit-scrollbar-thumb]:bg-gray-300
+              dark:[&::-webkit-scrollbar-thumb]:bg-gray-800
+              dark:hover:[&::-webkit-scrollbar-thumb]:bg-gray-700
+              [@supports(scrollbar-width:thin)]:scrollbar-thin
+              [@supports(scrollbar-color:auto)]:scrollbar-color-gray-200"
+            >
+              <TableOfContents source={source} isMobile={true} />
+            </div>
           </div>
         </>
       )}

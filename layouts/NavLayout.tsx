@@ -9,10 +9,12 @@ import { Suspense } from 'react'
 import LoadingSection from '@/components/nav/LoadingSection'
 import 'css/post.css'
 import SearchBar from '@/components/nav/SearchEngineBar'
+import MobileNavTOC from '@/components/nav/MobileNavTOC'
 
 export default function NavLayout({ navItems }: { navItems: NavData }) {
   const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({})
   const [isLoading, setIsLoading] = useState(true)
+  const [isTOCOpen, setIsTOCOpen] = useState(false)
 
   useEffect(() => {
     if (navItems) {
@@ -43,7 +45,9 @@ export default function NavLayout({ navItems }: { navItems: NavData }) {
 
         <main className="flex-1 lg:pl-8">
           <div className="flex justify-end w-full">
-            <SearchBar />
+            <div className="w-full lg:w-auto">
+              <SearchBar />
+            </div>
           </div>
           <div className="max-w-7xl mx-auto w-full">
 
@@ -105,6 +109,17 @@ export default function NavLayout({ navItems }: { navItems: NavData }) {
             </Suspense>
           </div>
         </main>
+
+        <div className="lg:hidden">
+          <MobileNavTOC 
+            navItems={navItems}
+            buttonPosition={{ bottom: '6rem', right: '1rem' }}
+            panelPosition={{ bottom: '6rem', right: '5rem' }}
+            maxHeight="70vh"
+            width="14rem"
+          />
+        </div>
+ 
       </div>
     </GradientBackground>
   )

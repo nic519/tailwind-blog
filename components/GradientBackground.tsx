@@ -66,7 +66,7 @@ const GradientBackground = ({
       {/* 火箭按钮 */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 p-3 rounded-full bg-white/70 dark:bg-gray-800/70 
+        className={`fixed bottom-8 right-4 p-3 rounded-full bg-white/70 dark:bg-gray-800/70 
           shadow-lg ring-1 ring-black/5 dark:ring-white/5 backdrop-blur-md
           transition-all duration-300 hover:scale-110 z-50
           ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}

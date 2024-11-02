@@ -96,6 +96,7 @@
                                 "createdAt": "2021-01-23 09:32:06"
                             },
                             {
+                                "icon": "https://shields.io/img/logo.png",
                                 "name": "Shields IO",
                                 "desc": "svg生成版本号图标",
                                 "url": "https://shields.io/",
