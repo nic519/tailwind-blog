@@ -49,8 +49,10 @@ export default function NavLayout({ navItems }: { navItems: NavData }) {
                       {category.title}
                     </h2>
                     {category.nav?.map(navGroup => {
-                      // 生成 navGroup 的 ID
-                      const navGroupId = generateUniqueId(category.title, navGroup.title, navGroup.createdAt || '')
+                      // 生成 navGroup 的 ID，包含完整路径
+                      const navGroupId = generateUniqueId(
+                        ...[category.title, navGroup.title, navGroup.createdAt || '']
+                      )
                       return (
                         <section key={navGroup.title} id={navGroupId} className="mb-12">
                           <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
@@ -58,8 +60,10 @@ export default function NavLayout({ navItems }: { navItems: NavData }) {
                           </h3>
                           <div className="space-y-8">
                             {navGroup.nav?.map(section => {
-                              // 生成 section 的 ID
-                              const sectionId = generateUniqueId(category.title, section.title, section.createdAt || '')
+                              // 生成 section 的 ID，包含完整路径
+                              const sectionId = generateUniqueId(
+                                ...[category.title, navGroup.title, section.title, section.createdAt || '']
+                              )
                               return (
                                 <section key={section.title} id={sectionId} className="mb-8">
                                   <h4 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
