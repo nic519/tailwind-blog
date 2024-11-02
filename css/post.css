@@ -17,35 +17,52 @@
   }
 }
 
- 
-
 @layer components {
-  .prose h2,
-  .prose h3 {
+  /* 创建一个通用的渐变横线样式 */
+  .gradient-line-after {
     position: relative;
     padding-bottom: 0.75rem;
   }
 
-  .prose h2::after {
+  .gradient-line-after::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     height: 0.2rem;
-    width: 8rem;
     border-radius: 9999px;
     background: var(--main-gradient);
   }
 
-  .prose h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 0.2rem;
+  /* 不同宽度的变体 */
+  .gradient-line-after.line-lg::after {
+    width: 16rem;
+  }
+
+  .gradient-line-after.line-md::after {
+    width: 8rem;
+  }
+
+  .gradient-line-after.line-sm::after {
     width: 4rem;
-    border-radius: 9999px;
-    background: var(--main-gradient);
+  }
+
+  .gradient-line-after.line-xm::after {
+    width: 2rem;
+  }
+
+  /* 保持原有的 prose 样式 */
+  .prose h2,
+  .prose h3 {
+    @apply gradient-line-after;
+  }
+
+  .prose h2::after {
+    width: 8rem;
+  }
+
+  .prose h3::after {
+    width: 4rem;
   }
 
   .article-title-wrapper {

@@ -3,6 +3,7 @@ interface NavLink {
   desc: string
   url: string 
   createdAt?: string 
+  icon?: string
 }
 
 interface NavSubGroup {

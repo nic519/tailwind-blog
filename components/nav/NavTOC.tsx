@@ -156,7 +156,21 @@ export default function NavTOC({ navItems }: NavTOCProps) {
     }, [activeId])
 
     return (
-      <div ref={tocRef} className="h-[calc(100vh-8rem)] overflow-y-auto space-y-4 pr-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent">
+      <div 
+        ref={tocRef} 
+        className="h-[calc(100vh-8rem)] overflow-y-auto space-y-4 pr-4 
+          [&::-webkit-scrollbar]:w-1.5
+          [&::-webkit-scrollbar-track]:bg-transparent
+          [&::-webkit-scrollbar-thumb]:bg-gray-200
+          [&::-webkit-scrollbar-thumb]:rounded-full
+          [&::-webkit-scrollbar-thumb]:border-2
+          [&::-webkit-scrollbar-thumb]:border-transparent
+          hover:[&::-webkit-scrollbar-thumb]:bg-gray-300
+          dark:[&::-webkit-scrollbar-thumb]:bg-gray-800
+          dark:hover:[&::-webkit-scrollbar-thumb]:bg-gray-700
+          [@supports(scrollbar-width:thin)]:scrollbar-thin
+          [@supports(scrollbar-color:auto)]:scrollbar-color-gray-200"
+      >
         {navItems.map(category => (
           <div key={category.title} className="space-y-2">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -169,42 +183,36 @@ export default function NavTOC({ navItems }: NavTOCProps) {
                 navGroup.createdAt || ''
               ])
               return (
-                <div key={navGroup.title} data-section={navGroupId} className="pl-2">
+                <div key={navGroup.title} data-section={navGroupId} className="pl-0">
                   <a
                     href={`#${navGroupId}`}
                     onClick={(e) => handleClick(e, navGroupId)}
-                    className={`block text-sm transition-colors duration-200 ${
+                    className={`block text-base font-bold transition-colors my-2 duration-200 ${
                       activeId === navGroupId
-                        ? 'text-blue-500 font-medium'
+                        ? 'text-blue-500'
                         : 'text-gray-600 dark:text-gray-400 hover:text-blue-500'
                     }`}
                   >
                     {navGroup.title}
-                    {navGroup.nav?.length > 0 && (
-                      <span className="ml-2 text-xs text-gray-400">
-                        × {navGroup.nav.length}
-                      </span>
-                    )}
                   </a>
                   {navGroup.nav?.map(section => {
                     const sectionId = generateUniqueId(...[
                       category.title,
                       navGroup.title,
-                      section.title,
-                      section.createdAt || ''
+                      section.title
                     ])
                     return (
-                      <div key={section.title} data-section={sectionId} className="pl-4 mt-1">
+                      <div key={section.title} data-section={sectionId} className="pl-0 mt-1 font-medium">
                         <a
                           href={`#${sectionId}`}
                           onClick={(e) => handleClick(e, sectionId)}
                           className={`block text-sm transition-colors duration-200 ${
                             activeId === sectionId
-                              ? 'text-blue-500 font-medium'
+                              ? 'text-blue-500 font-bold'
                               : 'text-gray-600 dark:text-gray-400 hover:text-blue-500'
                           }`}
                         >
-                          {section.title}
+                          - {section.title}
                           {section.itemNav?.length > 0 && (
                             <span className="ml-2 text-xs text-gray-400">
                               × {section.itemNav.length}

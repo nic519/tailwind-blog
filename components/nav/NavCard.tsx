@@ -27,7 +27,7 @@ export default function NavCard({ name, desc, url, icon, urls }: NavCardProps) {
             alt=""
             width={32}
             height={32} 
-            className="rounded-lg object-contain"
+            className="rounded object-contain"
             loading="lazy"
             onError={(e) => {
               // 移除错误的图片元素
