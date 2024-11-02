@@ -13,40 +13,95 @@ export default function NavTOC({ navItems }: NavTOCProps) {
   const tocRef = useRef<HTMLDivElement>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault()
+    const element = document.getElementById(id)
+    if (element) {
+      const offset = 80 // 顶部偏移量
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      })
+      setActiveId(id)
+    }
+  }
+
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const setupObserver = () => {
       if (observerRef.current) {
         observerRef.current.disconnect()
       }
 
       observerRef.current = new IntersectionObserver(
         (entries) => {
-          const visibleEntries = entries.filter(entry => entry.isIntersecting)
-          
-          if (visibleEntries.length > 0) {
-            const topEntry = visibleEntries.reduce((prev, curr) => {
-              return prev.boundingClientRect.y < curr.boundingClientRect.y ? prev : curr
+          // 获取所有可见的部分
+          const visibleSections = entries.filter(entry => {
+            const rect = entry.boundingClientRect
+            const ratio = entry.intersectionRatio
+            
+            // 调试信息
+            console.log(`Section ${entry.target.id}:`, {
+              ratio,
+              top: rect.top,
+              isIntersecting: entry.isIntersecting
             })
             
-            setActiveId(topEntry.target.id)
+            // 判断元素是否在视口中且足够可见
+            return entry.isIntersecting && rect.top <= 100 && ratio > 0
+          })
+
+          if (visibleSections.length > 0) {
+            // 找到最靠近顶部的可见部分
+            const activeSection = visibleSections.reduce((prev, curr) => {
+              const prevTop = Math.abs(prev.boundingClientRect.top)
+              const currTop = Math.abs(curr.boundingClientRect.top)
+              return prevTop < currTop ? prev : curr
+            })
+
+            const newActiveId = activeSection.target.id
+            if (newActiveId !== activeId) {
+              console.log('Setting new active ID:', newActiveId)
+              setActiveId(newActiveId)
+            }
           }
         },
         {
-          rootMargin: '-10% 0px -80% 0px',
-          threshold: [0, 0.1, 0.5, 1]
+          // 调整观察区域
+          rootMargin: '-80px 0px -50% 0px',
+          threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
         }
       )
 
-      document.querySelectorAll('section[id]').forEach((section) => {
+      // 观察所有 section 元素
+      const sections = document.querySelectorAll('section[id]')
+      console.log('Found sections:', sections.length)
+      
+      sections.forEach(section => {
         observerRef.current?.observe(section)
+        console.log('Started observing:', section.id)
       })
-    }, 100)
-
-    return () => {
-      clearTimeout(timer)
-      observerRef.current?.disconnect()
     }
-  }, [navItems])
+
+    // 确保在 DOM 完全加载后设置观察器
+    if (document.readyState === 'complete') {
+      setupObserver()
+    } else {
+      const handleLoad = () => {
+        setupObserver()
+        window.removeEventListener('load', handleLoad)
+      }
+      window.addEventListener('load', handleLoad)
+      return () => window.removeEventListener('load', handleLoad)
+    }
+
+    // 组件卸载时清理
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+      }
+    }
+  }, [navItems, activeId]) // 依赖项中添加 activeId
 
   useEffect(() => {
     if (activeId && tocRef.current) {
@@ -56,84 +111,77 @@ export default function NavTOC({ navItems }: NavTOCProps) {
         const containerRect = container.getBoundingClientRect()
         const elementRect = activeElement.getBoundingClientRect()
 
-        const isInView = (
-          elementRect.top >= containerRect.top &&
-          elementRect.bottom <= containerRect.bottom
-        )
-
-        if (!isInView) {
-          const containerCenter = container.offsetHeight / 2
-          const elementCenter = activeElement.offsetHeight / 2
-          const scrollTo = activeElement.offsetTop - containerCenter + elementCenter
-
-          container.scrollTo({
-            top: scrollTo,
-            behavior: 'smooth'
+        if (elementRect.top < containerRect.top || elementRect.bottom > containerRect.bottom) {
+          activeElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
           })
         }
       }
     }
   }, [activeId])
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setActiveId(id)
-    }
-  }
-
   return (
-    <div ref={tocRef} className="h-full overflow-y-auto
-      [&::-webkit-scrollbar]:w-1.5
-      [&::-webkit-scrollbar-track]:bg-transparent
-      [&::-webkit-scrollbar-thumb]:bg-gray-300/50
-      [&::-webkit-scrollbar-thumb]:rounded-full
-      [&::-webkit-scrollbar-thumb]:border-4
-      [&::-webkit-scrollbar-thumb]:border-solid
-      [&::-webkit-scrollbar-thumb]:border-transparent
-      [&::-webkit-scrollbar-thumb]:bg-clip-padding
-      hover:[&::-webkit-scrollbar-thumb]:bg-gray-300
-      dark:[&::-webkit-scrollbar-thumb]:bg-gray-700/50
-      dark:hover:[&::-webkit-scrollbar-thumb]:bg-gray-700">
-      <div className="mb-8">
-        <h1 className="text-xl font-bold text-gray-900 dark:text-white">发现导航</h1>
-      </div>
-      
+    <div ref={tocRef} className="h-[calc(100vh-8rem)] overflow-y-auto space-y-4 pr-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent">
       {navItems.map(category => (
         <div key={category.title} className="space-y-2">
-          <h2 className="text-sm font-bold text-primary-400 dark:text-primary-500 my-4">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
             {category.title}
-          </h2>
-          {category.nav.flatMap(navGroup => 
-            navGroup.nav.map(section => {
-              const sectionId = generateUniqueId(category.title, section.title, section.createdAt || '')
-              return (
-                <button
-                  key={sectionId}
-                  data-section={sectionId}
-                  onClick={() => scrollToSection(sectionId)}
-                  className={`flex w-full items-center px-3 py-2 rounded-lg text-left text-sm
-                    transition-colors duration-200 ${
-                      activeId === sectionId 
-                        ? 'bg-primary-500/10 text-primary-500' 
-                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800/50'
-                    }`}
+          </h3>
+          {category.nav?.map(navGroup => {
+            const navGroupId = generateUniqueId(category.title, navGroup.title, navGroup.createdAt || '')
+            return (
+              <div
+                key={navGroup.title}
+                data-section={navGroupId}
+                className="pl-2"
+              >
+                <a
+                  href={`#${navGroupId}`}
+                  onClick={(e) => handleClick(e, navGroupId)}
+                  className={`block text-sm transition-colors duration-200 ${
+                    activeId === navGroupId
+                      ? 'text-blue-500 font-medium'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-blue-500'
+                  }`}
                 >
-                  <span>{section.title}</span>
-                  {section.itemNav && (
-                    <span className={`ml-auto text-xs ${
-                      activeId === sectionId
-                        ? 'text-primary-500/70'
-                        : 'text-gray-400 dark:text-gray-500'
-                    }`}>
-                      × {section.itemNav.length}
+                  {navGroup.title}
+                  {navGroup.nav?.length > 0 && (
+                    <span className="ml-2 text-xs text-gray-400">
+                      × {navGroup.nav.length}
                     </span>
                   )}
-                </button>
-              )
-            })
-          )}
+                </a>
+                {navGroup.nav?.map(section => {
+                  const sectionId = generateUniqueId(category.title, section.title, section.createdAt || '')
+                  return (
+                    <div
+                      key={section.title}
+                      data-section={sectionId}
+                      className="pl-4 mt-1"
+                    >
+                      <a
+                        href={`#${sectionId}`}
+                        onClick={(e) => handleClick(e, sectionId)}
+                        className={`block text-sm transition-colors duration-200 ${
+                          activeId === sectionId
+                            ? 'text-blue-500 font-medium'
+                            : 'text-gray-600 dark:text-gray-400 hover:text-blue-500'
+                        }`}
+                      >
+                        {section.title}
+                        {section.itemNav?.length > 0 && (
+                          <span className="ml-2 text-xs text-gray-400">
+                            × {section.itemNav.length}
+                          </span>
+                        )}
+                      </a>
+                    </div>
+                  )
+                })}
+              </div>
+            )
+          })}
         </div>
       ))}
     </div>

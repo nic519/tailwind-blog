@@ -44,45 +44,46 @@ export default function NavLayout({ navItems }: { navItems: NavData }) {
                 </div>
               ) : (
                 navItems.map(category => (
-                  <div key={category.title}>
-                    {category.nav.map(navGroup => (
-                      <div key={navGroup.title}>
-                        {navGroup.nav.map(section => {
-                          const categoryTitle = category.title;
-                          const sectionTitle = section.title;
-                          const uniqueId = generateUniqueId(categoryTitle, sectionTitle, section.createdAt || '')
-                          return (
-                            <section key={sectionTitle} id={uniqueId} className='mb-12'>
-                              <h2 onClick={() => toggleSection(uniqueId)} className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2 cursor-pointer select-none">
-                                <span className="flex items-center gap-2">
-                                  <svg className={`w-4 h-4 transition-transform duration-200 ${(expandedSections[uniqueId] ?? true) ? 'rotate-90' : ''}`} viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6l-6 6l-1.41-1.41z" />
-                                  </svg>
-                                  {section.title}
-                                </span>
-                                {section.itemNav?.length && (
-                                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                                    × {section.itemNav.length}
-                                  </span>
-                                )}
-                              </h2>
-                              <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 transition-all duration-200 ease-in-out ${(expandedSections[uniqueId] ?? true) ? 'opacity-100 max-h-[2000px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                                {section.itemNav?.length > 0 && section.itemNav.map(item => (
-                                  <NavCard
-                                    key={item.id}
-                                    name={item.name}
-                                    desc={item.desc}
-                                    url={item.url}
-                                    icon={item.icon}
-                                    urls={item.urls}
-                                  />
-                                ))}
-                              </div>
-                            </section>
-                          );
-                        })}
-                      </div>
-                    ))}
+                  <div key={category.title} className="mb-16">
+                    <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white">
+                      {category.title}
+                    </h2>
+                    {category.nav?.map(navGroup => {
+                      // 生成 navGroup 的 ID
+                      const navGroupId = generateUniqueId(category.title, navGroup.title, navGroup.createdAt || '')
+                      return (
+                        <section key={navGroup.title} id={navGroupId} className="mb-12">
+                          <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
+                            {navGroup.title}
+                          </h3>
+                          <div className="space-y-8">
+                            {navGroup.nav?.map(section => {
+                              // 生成 section 的 ID
+                              const sectionId = generateUniqueId(category.title, section.title, section.createdAt || '')
+                              return (
+                                <section key={section.title} id={sectionId} className="mb-8">
+                                  <h4 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
+                                    {section.title}
+                                  </h4>
+                                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                    {section.itemNav?.length > 0 && section.itemNav.map(item => (
+                                      <NavCard
+                                        key={item.id}
+                                        name={item.name}
+                                        desc={item.desc}
+                                        url={item.url}
+                                        icon={item.icon}
+                                        urls={item.urls}
+                                      />
+                                    ))}
+                                  </div>
+                                </section>
+                              );
+                            })}
+                          </div>
+                        </section>
+                      );
+                    })}
                   </div>
                 ))
               )}
