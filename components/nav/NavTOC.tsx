@@ -11,45 +11,57 @@ interface NavTOCProps {
 export default function NavTOC({ navItems }: NavTOCProps) {
   const [activeId, setActiveId] = useState<string>('')
   const tocRef = useRef<HTMLDivElement>(null)
+  const observerRef = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id)
-          }
-        })
-      },
-      {
-        rootMargin: '-20% 0px -35% 0px'
+    const timer = setTimeout(() => {
+      if (observerRef.current) {
+        observerRef.current.disconnect()
       }
-    )
 
-    document.querySelectorAll('section[id]').forEach((section) => {
-      observer.observe(section)
-    })
+      observerRef.current = new IntersectionObserver(
+        (entries) => {
+          const visibleEntries = entries.filter(entry => entry.isIntersecting)
+          
+          if (visibleEntries.length > 0) {
+            const topEntry = visibleEntries.reduce((prev, curr) => {
+              return prev.boundingClientRect.y < curr.boundingClientRect.y ? prev : curr
+            })
+            
+            setActiveId(topEntry.target.id)
+          }
+        },
+        {
+          rootMargin: '-10% 0px -80% 0px',
+          threshold: [0, 0.1, 0.5, 1]
+        }
+      )
 
-    return () => observer.disconnect()
-  }, [])
+      document.querySelectorAll('section[id]').forEach((section) => {
+        observerRef.current?.observe(section)
+      })
+    }, 100)
+
+    return () => {
+      clearTimeout(timer)
+      observerRef.current?.disconnect()
+    }
+  }, [navItems])
 
   useEffect(() => {
     if (activeId && tocRef.current) {
       const activeElement = tocRef.current.querySelector(`[data-section="${activeId}"]`) as HTMLElement
       if (activeElement) {
-        // 获取容器的可视区域信息
         const container = tocRef.current
         const containerRect = container.getBoundingClientRect()
         const elementRect = activeElement.getBoundingClientRect()
 
-        // 检查元素是否在可视区域内
         const isInView = (
           elementRect.top >= containerRect.top &&
           elementRect.bottom <= containerRect.bottom
         )
 
         if (!isInView) {
-          // 计算滚动位置，使元素位于容器中间位置
           const containerCenter = container.offsetHeight / 2
           const elementCenter = activeElement.offsetHeight / 2
           const scrollTo = activeElement.offsetTop - containerCenter + elementCenter
@@ -95,7 +107,7 @@ export default function NavTOC({ navItems }: NavTOCProps) {
           </h2>
           {category.nav.flatMap(navGroup => 
             navGroup.nav.map(section => {
-              const sectionId = generateUniqueId(category.title, section.title)
+              const sectionId = generateUniqueId(category.title, section.title, section.createdAt || '')
               return (
                 <button
                   key={sectionId}
