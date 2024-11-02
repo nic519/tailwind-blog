@@ -31,32 +31,18 @@ export default function NavTOC({ navItems }: NavTOCProps) {
       const elementTop = rect.top + scrollTop
       const offset = 80
 
-      window.scrollTo({
-        top: elementTop - offset - 10,
-        behavior: 'auto'
-      })
-
-      requestAnimationFrame(() => {
-        window.scrollTo({
-          top: elementTop - offset,
-          behavior: 'smooth'
-        })
-      })
-
       const handleScrollEnd = () => {
-        setTimeout(() => {
-          isScrollingRef.current = false
-          initializeObserver()
-        }, 100)
+        isScrollingRef.current = false
+        initializeObserver()
+        window.removeEventListener('scrollend', handleScrollEnd)
       }
+      
+      window.addEventListener('scrollend', handleScrollEnd)
 
-      const scrollListener = debounce(() => {
-        if (isScrollingRef.current) {
-          handleScrollEnd()
-        }
-      }, 150)
-
-      window.addEventListener('scroll', scrollListener, { once: true })
+      window.scrollTo({
+        top: elementTop - offset,
+        behavior: 'smooth'
+      })
     }
   }
 
