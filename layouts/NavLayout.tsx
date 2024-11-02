@@ -8,23 +8,28 @@ import { type NavData } from '@/components/nav/types/nav'
 import { Suspense } from 'react'
 import LoadingSection from '@/components/nav/LoadingSection'
 import 'css/post.css'
+import SearchBar from '@/components/nav/SearchEngineBar'
 
 export default function NavLayout({ navItems }: { navItems: NavData }) {
   const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({})
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    setIsLoading(true)
-    setTimeout(() => {
+    if (navItems) {
       setIsLoading(false)
-    }, 500)
+    }
   }, [navItems])
 
-  const toggleSection = (sectionId: string) => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [sectionId]: !prev[sectionId]
-    }))
+  if (!navItems) {
+    return (
+      <GradientBackground enableGrid={true} className="min-h-screen">
+        <div className="space-y-12">
+          {[1, 2, 3].map((i) => (
+            <LoadingSection key={i} />
+          ))}
+        </div>
+      </GradientBackground>
+    )
   }
 
   return (
@@ -37,7 +42,11 @@ export default function NavLayout({ navItems }: { navItems: NavData }) {
         </aside>
 
         <main className="flex-1 lg:pl-8">
-          <div className="max-w-7xl mx-auto">
+          <div className="flex justify-end w-full">
+            <SearchBar />
+          </div>
+          <div className="max-w-7xl mx-auto w-full">
+
             <Suspense fallback={<LoadingSection />}>
               {isLoading ? (
                 <div className="space-y-12">
@@ -72,13 +81,14 @@ export default function NavLayout({ navItems }: { navItems: NavData }) {
                                   <h4 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
                                     {section.title}
                                   </h4>
-                                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                  <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                                     {section.itemNav?.length > 0 && section.itemNav.map(item => (
-                                      <NavCard 
+                                      <NavCard
+                                        key={`${item.name}-${item.url}`}
                                         name={item.name}
                                         desc={item.desc}
                                         url={item.url}
-                                        icon={item.icon} 
+                                        icon={item.icon}
                                       />
                                     ))}
                                   </div>

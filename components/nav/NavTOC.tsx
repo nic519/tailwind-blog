@@ -173,7 +173,8 @@ export default function NavTOC({ navItems }: NavTOCProps) {
       >
         {navItems.map(category => (
           <div key={category.title} className="space-y-2">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-bold tracking-tight
+              text-slate-800 dark:text-slate-200">
               {category.title}
             </h3>
             {category.nav?.map(navGroup => {
@@ -187,10 +188,10 @@ export default function NavTOC({ navItems }: NavTOCProps) {
                   <a
                     href={`#${navGroupId}`}
                     onClick={(e) => handleClick(e, navGroupId)}
-                    className={`block text-base font-bold transition-colors my-2 duration-200 ${
+                    className={`block text-[15px] font-medium transition-colors my-2 duration-200 ${
                       activeId === navGroupId
-                        ? 'text-blue-500'
-                        : 'text-gray-600 dark:text-gray-400 hover:text-blue-500'
+                        ? 'text-indigo-500 dark:text-indigo-400'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-400'
                     }`}
                   >
                     {navGroup.title}
@@ -202,19 +203,19 @@ export default function NavTOC({ navItems }: NavTOCProps) {
                       section.title
                     ])
                     return (
-                      <div key={section.title} data-section={sectionId} className="pl-0 mt-1 font-medium">
+                      <div key={section.title} data-section={sectionId} className="pl-2 mt-1">
                         <a
                           href={`#${sectionId}`}
                           onClick={(e) => handleClick(e, sectionId)}
-                          className={`block text-sm transition-colors duration-200 ${
+                          className={`block text-[13px] leading-relaxed transition-colors duration-200 ${
                             activeId === sectionId
-                              ? 'text-blue-500 font-bold'
-                              : 'text-gray-600 dark:text-gray-400 hover:text-blue-500'
+                              ? 'text-indigo-500 dark:text-indigo-400 font-bold'
+                              : 'text-slate-600 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400'
                           }`}
                         >
                           - {section.title}
                           {section.itemNav?.length > 0 && (
-                            <span className="ml-2 text-xs text-gray-400">
+                            <span className="ml-2 text-[11px] text-slate-400 dark:text-slate-500">
                               × {section.itemNav.length}
                             </span>
                           )}
