@@ -177,46 +177,38 @@ export default function NavTOC({ navItems }: NavTOCProps) {
               text-slate-800 dark:text-slate-200">
               {category.title}
             </h3>
-            {category.nav?.map(navGroup => {
-              const navGroupId = generateUniqueId(...[
-                category.title,
-                navGroup.title,
-                navGroup.createdAt || ''
-              ])
+            {category.nav?.map(section => {
+              const sectionId = generateUniqueId(category.title, section.title)
               return (
-                <div key={navGroup.title} data-section={navGroupId} className="pl-0">
+                <div key={section.title} data-section={sectionId} className="pl-0">
                   <a
-                    href={`#${navGroupId}`}
-                    onClick={(e) => handleClick(e, navGroupId)}
+                    href={`#${sectionId}`}
+                    onClick={(e) => handleClick(e, sectionId)}
                     className={`block text-[15px] font-medium transition-colors my-2 duration-200 ${
-                      activeId === navGroupId
+                      activeId === sectionId
                         ? 'text-indigo-500 dark:text-indigo-400'
                         : 'text-slate-700 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-400'
                     }`}
                   >
-                    {navGroup.title}
+                    {section.title}
                   </a>
-                  {navGroup.nav?.map(section => {
-                    const sectionId = generateUniqueId(...[
-                      category.title,
-                      navGroup.title,
-                      section.title
-                    ])
+                  {section.nav?.map(subSection => {
+                    const subSectionId = generateUniqueId(category.title, section.title, subSection.title)
                     return (
-                      <div key={section.title} data-section={sectionId} className="pl-2 mt-1">
+                      <div key={subSection.title} data-section={subSectionId} className="pl-2 mt-1">
                         <a
-                          href={`#${sectionId}`}
-                          onClick={(e) => handleClick(e, sectionId)}
+                          href={`#${subSectionId}`}
+                          onClick={(e) => handleClick(e, subSectionId)}
                           className={`block text-[13px] leading-relaxed transition-colors duration-200 ${
-                            activeId === sectionId
+                            activeId === subSectionId
                               ? 'text-indigo-500 dark:text-indigo-400 font-bold'
                               : 'text-slate-600 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400'
                           }`}
                         >
-                          - {section.title}
-                          {section.itemNav?.length > 0 && (
+                          - {subSection.title}
+                          {(subSection.itemNav?.length ?? 0) > 0 && (
                             <span className="ml-2 text-[11px] text-slate-400 dark:text-slate-500">
-                              × {section.itemNav.length}
+                              × {subSection.itemNav?.length}
                             </span>
                           )}
                         </a>

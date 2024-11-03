@@ -12,9 +12,7 @@ import SearchBar from '@/components/nav/SearchEngineBar'
 import MobileNavTOC from '@/components/nav/MobileNavTOC'
 
 export default function NavLayout({ navItems }: { navItems: NavData }) {
-  const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({})
   const [isLoading, setIsLoading] = useState(true)
-  const [isTOCOpen, setIsTOCOpen] = useState(false)
 
   useEffect(() => {
     if (navItems) {
@@ -64,44 +62,52 @@ export default function NavLayout({ navItems }: { navItems: NavData }) {
                     <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white gradient-line-after line-sm">
                       {category.title}
                     </h2>
-                    {category.nav?.map(navGroup => {
-                      // 生成 navGroup 的 ID，包含完整路径
-                      const navGroupId = generateUniqueId(
-                        ...[category.title, navGroup.title, navGroup.createdAt || '']
-                      )
+                    {category.nav?.map(section => {
+                      const sectionId = generateUniqueId(category.title, section.title)
                       return (
-                        <section key={navGroup.title} id={navGroupId} className="mb-12">
+                        <section key={section.title} id={sectionId} className="mb-12">
                           <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200 gradient-line-after line-xm">
-                            {navGroup.title}
+                            {section.title}
                           </h3>
-                          <div className="space-y-8">
-                            {navGroup.nav?.map(section => {
-                              // 生成 section 的 ID，包含完整路径
-                              const sectionId = generateUniqueId(
-                                ...[category.title, navGroup.title, section.title]
-                              )
-                              return (
-                                <section key={section.title} id={sectionId} className="mb-8">
-                                  <h4 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
-                                    {section.title}
-                                  </h4>
-                                  <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                                    {section.itemNav?.length > 0 && section.itemNav.map(item => (
-                                      <NavCard
-                                        key={`${item.name}-${item.url}`}
-                                        name={item.name}
-                                        desc={item.desc}
-                                        url={item.url}
-                                        icon={item.icon}
-                                      />
-                                    ))}
-                                  </div>
-                                </section>
-                              );
-                            })}
-                          </div>
+                          {section.itemNav ? (
+                            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                              {section.itemNav.map(item => (
+                                <NavCard
+                                  key={`${item.name}-${item.url}`}
+                                  name={item.name}
+                                  desc={item.desc}
+                                  url={item.url}
+                                  icon={item.icon}
+                                />
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="space-y-8">
+                              {section.nav?.map(subSection => {
+                                const subSectionId = generateUniqueId(category.title, section.title, subSection.title)
+                                return (
+                                  <section key={subSection.title} id={subSectionId} className="mb-8">
+                                    <h4 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
+                                      {subSection.title}
+                                    </h4>
+                                    <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                      {subSection.itemNav?.map(item => (
+                                        <NavCard
+                                          key={`${item.name}-${item.url}`}
+                                          name={item.name}
+                                          desc={item.desc}
+                                          url={item.url}
+                                          icon={item.icon}
+                                        />
+                                      ))}
+                                    </div>
+                                  </section>
+                                )
+                              })}
+                            </div>
+                          )}
                         </section>
-                      );
+                      )
                     })}
                   </div>
                 ))
