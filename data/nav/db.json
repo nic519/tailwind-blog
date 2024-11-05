@@ -6359,6 +6359,13 @@
                         "url": "https://www.aisourcehub.info/",
                         "desc": "收集一些有观点、有干货、一手的AI 科技资讯资源，可以帮助你更好地了解和跟踪前沿一手消息,解决信息焦虑",
                         "createdAt": "2024-11-04"
+                    },
+                    {
+                        "url": "https://bilin.ai/zh-CN",
+                        "name": "比邻AI搜索引擎",
+                        "desc": "用你的语言发现世界",
+                        "createdAt": "2024-11-06",
+                        "icon": "https://bilin.ai/imgs/logo-white.png"
                     }
                     
                 ],
