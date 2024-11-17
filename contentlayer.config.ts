@@ -104,6 +104,10 @@ export const Blog = defineDocumentType(() => ({
       type: 'string', // 添加 cover 字段
       required: false, // 设置为可选字段
     },
+    icon: {
+      type: 'string', // 添加 icon 字段
+      required: false, // 设置为可选字段
+    },
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' }, default: [] },

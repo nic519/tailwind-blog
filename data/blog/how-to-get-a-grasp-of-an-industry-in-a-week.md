@@ -2,8 +2,7 @@
 title: 如何在一周内摸清一个行业？
 abbrlink: how-to-get-a-grasp-of-an-industry-in-a-week
 cover:
-categories:
-  - 转载
+icon: 'fa:FaIndustry'
 tags:
   - 底层思维
 date: 2020-03-21 01:15

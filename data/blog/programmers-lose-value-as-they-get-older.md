@@ -5,6 +5,7 @@ abbrlink: programmers-lose-value-as-they-get-older
 tags:
   - 转载
   - 底层逻辑
+icon: 'md:MdSick'
 summary: 这家全员在家办公的独角兽公司上市了。无论“元宇宙上班”什么时候来临，倒是有一家没有线下办公室的公司已经通过上市证明办公室不是一定需要的。
 ---
 

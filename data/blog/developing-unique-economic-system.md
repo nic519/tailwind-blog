@@ -3,7 +3,8 @@ title: 我们能否完全抛弃西方经济学而建立自己的经济学体系�
 abbrlink: developing-unique-economic-system
 date: 2024-2-8 13:26:19
 tags: [转载, 经济学]
-cover: https://s2.loli.net/2024/03/18/Rha6FU1jTzDJ9OV.jpg
+# cover: https://s2.loli.net/2024/03/18/Rha6FU1jTzDJ9OV.jpg
+icon: 'gi:GiMoneyStack'
 summary: 国内大部分学者和官员都认为中国的成功是特殊的、并证明了中国体制的优势，但事实是中国的成功根本没有任何特殊性——中国的成功完全可以由西方经济学解释，即城市化、人口红利、全球化下的专业分工带来的快速工业化
 ---
 

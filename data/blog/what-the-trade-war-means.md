@@ -2,8 +2,7 @@
 title: 中美贸易战对年轻人意味着什么？
 abbrlink: what-the-trade-war-means
 date: 2019-06-05 04:10:15
-categories:
-  - 转载
+icon: 'fa:FaTradeFederation'
 tags:
   - 底层思维
   - 时事

@@ -1,13 +1,11 @@
 ---
 title: 互联网公司投资方法论
 abbrlink: internet-company-investment-methodology
-categories:
-  - 读书笔记
 tags:
   - 经济学
   - 读书笔记
 date: 2024-04-20 03:35
-cover:
+icon: 'fa:FaInternetExplorer'
 summary: 作为消费者，我们不会因为其他人都喝可口可乐，而影响我们对百事可乐口感的评价；但是在大部分自由市场中，Google、Facebook对其他竞争对手可以形成毁灭性的竞争优势，占据90%以上的份额。为什么？
 ---
 
