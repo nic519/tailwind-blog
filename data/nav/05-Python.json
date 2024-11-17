@@ -1,0 +1,275 @@
+{
+    "title": "Python",
+    "nav": [
+        {
+            "title": "生态系统",
+            "icon": "https://www.python.org/static/favicon.ico",
+            "nav": [
+                {
+                    "title": "官方",
+                    "itemNav": [
+                        {
+                            "name": "Python",
+                            "desc": "是一种解释型、面向对象、动态数据类型的高级程序设计语言。",
+                            "url": "https://www.python.org/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "PyPi",
+                            "desc": "使用Python软件包索引查找，安装和发布Python软件包",
+                            "url": "https://pypi.org/",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "工具",
+                    "itemNav": [
+                        {
+                            "name": "PCU",
+                            "desc": "python-check-updates, 检查 pip 当前依赖包最新版本",
+                            "url": "https://github.com/xjh22222228/python-check-updates",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                }
+            ],
+            "createdAt": "2021-01-23"
+        },
+        {
+            "title": "依赖包",
+            "icon": "https://www.python.org/static/favicon.ico",
+            "nav": [
+                {
+                    "title": "HTTP/爬虫",
+                    "itemNav": [
+                        {
+                            "icon": "https://www.python.org/static/favicon.ico",
+                            "name": "requests",
+                            "desc": "requests是一个简单而优雅的HTTP库。",
+                            "url": "https://requests.readthedocs.io/en/master/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://raw.githubusercontent.com/aio-libs/aiohttp/master/docs/_static/aiohttp-icon-128x128.png",
+                            "name": "aiohttp",
+                            "desc": "用于asyncio和Python的异步HTTP客户端/服务器框架",
+                            "url": "https://docs.aiohttp.org/en/stable/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars2.githubusercontent.com/u/733635?s=200&v=4",
+                            "name": "Scrapy",
+                            "desc": "一个用于Python的快速高级Web爬虫框架。",
+                            "url": "https://scrapy.org/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars0.githubusercontent.com/u/983927?s=200&v=4",
+                            "name": "selenium",
+                            "desc": "浏览器自动化框架和生态系统。",
+                            "url": "https://www.selenium.dev/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "beautifulsoup",
+                            "desc": "可以从HTML或XML文件中提取数据的Python库",
+                            "url": "https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "图像",
+                    "itemNav": [
+                        {
+                            "name": "Pillow",
+                            "desc": "友好的PIL前叉，是一个出色的图像处理库",
+                            "url": "https://python-pillow.org/",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "运算",
+                    "itemNav": [
+                        {
+                            "name": "numpy",
+                            "desc": "使用Python进行科学计算的基本软件包。",
+                            "url": "https://numpy.org/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/21206976?s=200&v=4",
+                            "name": "pandas",
+                            "desc": "功能强大的Python数据分析工具包",
+                            "url": "https://github.com/pandas-dev/pandas",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "CLI",
+                    "itemNav": [
+                        {
+                            "createdAt": "2021-02-04",
+                            "name": "rich",
+                            "icon": "https://github.com/favicon.ico",
+                            "url": "https://github.com/willmcgugan/rich",
+                            "desc": "Rich是一个Python库，用于在终端中提供富文本和精美的格式。"
+                        },
+                        {
+                            "name": "Fire",
+                            "desc": "Python Fire是一个用于从绝对任何Python对象自动生成命令行界面（CLI）的库。",
+                            "url": "https://github.com/google/python-fire",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "colorama",
+                            "desc": "Python中简单的跨平台彩色终端文本",
+                            "url": "https://pypi.org/project/colorama/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/12731565?s=200&v=4",
+                            "name": "tqdm",
+                            "desc": "适用于Python和CLI的快速，可扩展的进度栏",
+                            "url": "https://github.com/tqdm/tqdm",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "paramiko",
+                            "desc": "领先的Python SSHv2协议库",
+                            "url": "https://github.com/paramiko/paramiko",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "click",
+                            "desc": "Python可组合命令行界面工具包",
+                            "url": "https://github.com/pallets/click",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "createdAt": "2021-01-24",
+                    "title": "其他",
+                    "icon": null,
+                    "itemNav": [
+                        {
+                            "createdAt": "2021-01-24",
+                            "name": "JMESPath",
+                            "icon": "https://github.com/favicon.ico",
+                            "url": "https://github.com/jmespath/jmespath.py",
+                            "desc": "JMESPath是JSON的查询语言"
+                        }
+                    ]
+                }
+            ],
+            "createdAt": "2021-01-23"
+        },
+        {
+            "title": "框架",
+            "icon": "https://www.python.org/static/favicon.ico",
+            "nav": [
+                {
+                    "title": "WEB框架",
+                    "itemNav": [
+                        {
+                            "icon": "https://avatars3.githubusercontent.com/u/27804?s=200&v=4",
+                            "name": "Django",
+                            "desc": "具有期限的完美主义者的Web框架。",
+                            "url": "https://www.djangoproject.com/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars0.githubusercontent.com/u/16748505?s=200&v=4",
+                            "name": "flask",
+                            "desc": "用于构建Web应用程序的Python微框架。",
+                            "url": "https://palletsprojects.com/p/flask/",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                }
+            ],
+            "createdAt": "2021-01-23"
+        },
+        {
+            "title": "参考资料",
+            "nav": [
+                {
+                    "title": "书籍",
+                    "icon": "https://www.python.org/static/favicon.ico",
+                    "itemNav": [
+                        {
+                            "name": "简明 Python 教程",
+                            "desc": "旨在于介绍如何使用 Python 语言进行编程的自由图书。它以教材与指南的形式为入门者介绍 Python 语言。如果你对电脑知识的了解仅限于如何保存文本文件的话，那这本书就是为你准备的。",
+                            "url": "https://bop.mol.uno/",
+                            "icon": "https://www.python.org/static/favicon.ico",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "文档资料",
+                    "icon": "https://www.python.org/static/favicon.ico",
+                    "itemNav": [
+                        {
+                            "name": "100天从新手到大师",
+                            "desc": "Python - 100天从新手到大师",
+                            "url": "https://github.com/jackfrued/Python-100-Days",
+                            "icon": "https://www.python.org/static/favicon.ico",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "Python 入门指南",
+                            "desc": "Python 入门指南",
+                            "url": "https://python666.cn/cls/lesson/list/",
+                            "icon": "https://www.python.org/static/favicon.ico",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "What the f*ck Python!",
+                            "desc": "一些有趣且鲜为人知的 Python 特性.",
+                            "url": "https://github.com/satwikkansal/wtfpython",
+                            "icon": "https://www.python.org/static/favicon.ico",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "awesome-python-cn",
+                            "desc": "Python 资源大全中文版",
+                            "url": "https://github.com/jobbole/awesome-python-cn",
+                            "icon": "https://www.python.org/static/favicon.ico",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "cheatsheet",
+                            "desc": "Python大全备忘单",
+                            "url": "https://github.com/gto76/python-cheatsheet",
+                            "icon": "https://www.python.org/static/favicon.ico",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "awesome-python",
+                            "desc": "精选的Python框架，库，软件和资源的精选清单。",
+                            "url": "https://github.com/vinta/awesome-python",
+                            "icon": "https://www.python.org/static/favicon.ico",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                }
+            ],
+            "createdAt": "2021-01-23"
+        }
+    ],
+    "createdAt": "2021-01-23"
+}

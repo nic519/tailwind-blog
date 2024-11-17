@@ -1,0 +1,607 @@
+{
+    "title": "Golang",
+    "nav": [
+        {
+            "title": "生态系统",
+            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+            "nav": [
+                {
+                    "title": "生态",
+                    "itemNav": [
+                        {
+                            "name": "Golang",
+                            "desc": "Go编程语言",
+                            "url": "https://go-zh.org/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "go.dev",
+                            "desc": "大规模构建快速，可靠，高效的软件",
+                            "url": "https://go.dev/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "awesome-go",
+                            "desc": "精选的Go框架，库和软件的精选列表",
+                            "url": "https://github.com/jobbole/awesome-go-cn",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/49926011?s=200&v=4",
+                            "name": "Goproxy",
+                            "desc": "中国最可靠的 Go 模块代理",
+                            "url": "https://goproxy.cn/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://static.studygolang.com/static/img/favicon.ico",
+                            "name": "Go语言中文网",
+                            "desc": "Go语言中文网",
+                            "url": "https://studygolang.com/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://studygolang.com/static/img/go.ico",
+                            "name": "Go标准库中文文档",
+                            "desc": "Go标准库中文文档",
+                            "url": "https://studygolang.com/pkgdoc",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "WEB框架",
+                    "itemNav": [
+                        {
+                            "name": "gin",
+                            "desc": "Gin是用Go（Golang）编写的Web框架。它具有类似于martini的API，其性能比httprouter快40倍。如果您需要性能和良好的生产率，您会喜欢Gin",
+                            "url": "https://learnku.com/docs/gin-gonic/2019/go-gin-document",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "beego",
+                            "desc": "beego是用于Go编程语言的开源，高性能Web框架",
+                            "url": "http://beego.me",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "martini",
+                            "desc": "Go的经典Web框架",
+                            "url": "http://martini.codegangsta.io",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/2624634?s=200&v=4",
+                            "name": "echo",
+                            "desc": "高性能，简约的Go Web框架",
+                            "url": "https://echo.labstack.com",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://www.iris-go.com/favicon.ico",
+                            "name": "iris",
+                            "desc": "最快的HTTP / 2 Go Web框架。AWS Lambda，gRPC，MVC，唯一路由器，Websocket，会话，测试套件，依赖注入等。expressjs和laravel的真正继承者|",
+                            "url": "https://www.iris-go.com/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/59947262?s=200&v=4",
+                            "name": "fiber",
+                            "desc": "Fiber是一个受Express启发的Web框架，建立在Fasthttp（Go最快的HTTP引擎）的基础上。 旨在简化零内存分配和性能的情况，以便快速开发。",
+                            "url": "https://gofiber.io/",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                }
+            ],
+            "createdAt": "2021-01-23"
+        },
+        {
+            "title": "依赖包",
+            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+            "nav": [
+                {
+                    "title": "GUI",
+                    "itemNav": [
+                        {
+                            "icon": "https://avatars3.githubusercontent.com/u/36045855?s=200&v=4",
+                            "name": "Fyne",
+                            "desc": "基于Material Design的Go跨平台GUI",
+                            "url": "https://fyne.io/",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "日志模块",
+                    "itemNav": [
+                        {
+                            "name": "logrus",
+                            "desc": "Go的结构化，可插入日志记录。",
+                            "url": "https://github.com/sirupsen/logrus",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars3.githubusercontent.com/u/19262598?s=200&v=4",
+                            "name": "zap",
+                            "desc": "在Go中实现快速，结构化，水平的日志记录。",
+                            "url": "https://github.com/uber-go/zap",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "数据库",
+                    "itemNav": [
+                        {
+                            "name": "gorm",
+                            "desc": "适用于Golang的绝佳ORM库，旨在对开发人员友好",
+                            "url": "https://gorm.io/zh_CN/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://entgo.io/img/favicon.ico",
+                            "name": "ent",
+                            "desc": "用于Go的简单但功能强大的实体框架，可轻松构建和维护具有大型数据模型的应用程序。",
+                            "url": "https://entgo.io/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "mysql",
+                            "desc": "Go MySQL驱动程序是Go（golang）数据库/ sql包的MySQL驱动程序",
+                            "url": "https://github.com/go-sql-driver/mysql",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "sqlite3",
+                            "desc": "sqlite3驱动程序",
+                            "url": "https://github.com/mattn/go-sqlite3",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "pq",
+                            "desc": "适用于database/sql的Pure Go Postgres驱动程序",
+                            "url": "https://github.com/lib/pq",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://redis.uptrace.dev/assets/images/favicon.png",
+                            "name": "redis",
+                            "desc": "用于Golang的类型安全的Redis客户端",
+                            "url": "https://redis.uptrace.dev/",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "解析器",
+                    "itemNav": [
+                        {
+                            "name": "json-iterator",
+                            "desc": "高性能100％兼容的“ encoding / json”替代产品",
+                            "url": "http://jsoniter.com/migrate-from-go-std.html",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "blackfriday",
+                            "desc": "Markdown处理器，安全、快速。",
+                            "url": "https://github.com/russross/blackfriday",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "goldmark",
+                            "desc": "用Go语言编写的markdown解析器。易于扩展，符合标准（CommonMark），结构合理。",
+                            "url": "https://github.com/yuin/goldmark",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "goquery",
+                            "desc": "接近jQuery语法的DOM解析库",
+                            "url": "https://github.com/PuerkitoBio/goquery",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "go-yaml",
+                            "desc": "yaml包使Go程序能够轻松地对yaml值进行编码和解码, 可以快速可靠地解析和生成YAML数据。",
+                            "url": "https://github.com/go-yaml/yaml/tree/v3",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "xurls",
+                            "desc": "从文本中提取Urls",
+                            "url": "https://github.com/mvdan/xurls",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "参数验证",
+                    "itemNav": [
+                        {
+                            "name": "govalidator",
+                            "desc": "参数验证程序，用于字符串，数字，切片和结构",
+                            "url": "https://github.com/asaskevich/govalidator",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "validator",
+                            "desc": "基于标签对结构和各个字段实现值验证。",
+                            "url": "https://github.com/go-playground/validator",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "其他",
+                    "itemNav": [
+                        {
+                            "name": "ip",
+                            "desc": "获取公网IP地址、v4/v6",
+                            "url": "https://github.com/xjh22222228/ip",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "terminal",
+                            "desc": "提供了用于处理终端的支持功能，这在UNIX系统上很常见",
+                            "url": "https://godoc.org/golang.org/x/crypto/ssh/terminal",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "gopsutil",
+                            "desc": "用于检索正在运行的进程和系统利用率（CPU，内存，磁盘，网络，传感器）的信息。它主要用于系统监视，概要分析和限制进程资源以及管理正在运行的进程",
+                            "url": "https://github.com/shirou/gopsutil",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "air",
+                            "desc": "Go热重载",
+                            "url": "https://github.com/cosmtrek/air",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "go-micro",
+                            "desc": "分布式系统开发框架",
+                            "url": "https://go-micro.dev",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "xlsx",
+                            "desc": "xlsx是一个库，用于简化在Go程序中读写Microsoft Excel最新版本使用的XML格式。",
+                            "url": "https://github.com/tealeg/xlsx",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "email",
+                            "desc": "Go强大而灵活的电子邮件库。",
+                            "url": "https://github.com/jordan-wright/email",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "websocket",
+                            "desc": "Go的一种快速，经过测试且广泛使用的WebSocket实现",
+                            "url": "https://github.com/gorilla/websocket",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "jwt-go",
+                            "desc": "Golang 实现的 JSON WEB TOKEN",
+                            "url": "https://github.com/dgrijalva/jwt-go",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "cron",
+                            "desc": "Go 实现的 cron 包",
+                            "url": "https://github.com/robfig/cron",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "qrcode",
+                            "desc": "二维码生成",
+                            "url": "https://github.com/skip2/go-qrcode",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars3.githubusercontent.com/u/27810343?s=200&v=4",
+                            "name": "casbin",
+                            "desc": "权限管理库，支持Golang中的访问控制模型，如ACL，RBAC，ABAC",
+                            "url": "https://casbin.org/zh-CN/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "resty",
+                            "desc": "用于Go的简单HTTP和REST客户端库",
+                            "url": "https://github.com/go-resty/resty",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://grpc.io/favicons/apple-touch-icon.png",
+                            "name": "grpc-go",
+                            "desc": "gRPC的Go语言实现。基于HTTP/2的RPC",
+                            "url": "https://grpc.io/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars2.githubusercontent.com/u/33584194?s=200&v=4",
+                            "name": "colly",
+                            "desc": "Colly提供了一个干净的界面来编写任何种类的爬虫",
+                            "url": "http://go-colly.org/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "cors",
+                            "desc": "使用net / http可配置的处理程序来处理CORS请求",
+                            "url": "https://github.com/rs/cors",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                }
+            ],
+            "createdAt": "2021-01-23"
+        },
+        {
+            "title": "CLI",
+            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+            "nav": [
+                {
+                    "title": "终端颜色",
+                    "itemNav": [
+                        {
+                            "name": "color",
+                            "desc": "CLI 控制台颜色渲染工具库, 支持Windows",
+                            "url": "https://github.com/fatih/color",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "命令行解析",
+                    "itemNav": [
+                        {
+                            "name": "cli",
+                            "desc": "一个简单，快速且有趣的软件包，用于在Go中构建命令行应用",
+                            "url": "https://github.com/urfave/cli/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "cobra",
+                            "desc": "Cobra既是用于创建功能强大的现代CLI应用程序的库，又是用于生成应用程序和命令文件的程序",
+                            "url": "https://github.com/spf13/cobra",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "控制台进度条",
+                    "itemNav": [
+                        {
+                            "name": "pb",
+                            "desc": "Golang的控制台进度栏",
+                            "url": "https://github.com/cheggaaa/pb",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "mpb",
+                            "desc": "Go cli应用程序的多进度条",
+                            "url": "https://github.com/vbauerster/mpb",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "其他",
+                    "itemNav": [
+                        {
+                            "name": "promptui",
+                            "desc": "命令行应用程序的交互式提示",
+                            "url": "https://github.com/manifoldco/promptui",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "godotenv",
+                            "desc": "从`.env`文件加载环境变量。",
+                            "url": "https://github.com/joho/godotenv",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "name": "go-prompt",
+                            "desc": "受python-prompt-toolkit启发，在Go中构建强大的交互式提示。",
+                            "url": "https://github.com/c-bata/go-prompt",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                }
+            ],
+            "createdAt": "2021-01-23"
+        },
+        {
+            "title": "工具",
+            "nav": [
+                {
+                    "title": "工具",
+                    "itemNav": [
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "gvm",
+                            "desc": "Go版本管理器，类似 nvm",
+                            "url": "https://github.com/moovweb/gvm",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "json-to-go",
+                            "desc": "在线 JSON 转 Struct结构体",
+                            "url": "https://mholt.github.io/json-to-go/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars3.githubusercontent.com/u/35628013?s=200&v=4",
+                            "name": "golangci-lint",
+                            "desc": "Go的快速Linters Runner",
+                            "url": "https://github.com/golangci/golangci-lint",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://play.golang.org/favicon.ico",
+                            "name": "The Go Playground",
+                            "desc": "在线运行Golang",
+                            "url": "https://play.golang.org/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://nuclei.projectdiscovery.io/",
+                            "name": "nuclei",
+                            "desc": "Nuclei是基于模板的可配置目标扫描的快速工具，具有广泛的可扩展性和易用性。",
+                            "url": "https://play.golang.org/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars3.githubusercontent.com/u/35628013?s=200&v=4",
+                            "name": "jaeger",
+                            "desc": "分布式链路追踪",
+                            "url": "https://www.jaegertracing.io/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/19232073?s=200&v=4",
+                            "name": "delve",
+                            "desc": "Delve是Go编程语言的调试器。",
+                            "url": "https://github.com/go-delve/delve",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                }
+            ],
+            "createdAt": "2021-01-23"
+        },
+        {
+            "title": "参考资料",
+            "nav": [
+                {
+                    "title": "书籍",
+                    "itemNav": [
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Go 入门指南",
+                            "desc": "《The Way to Go》中文译本，中文正式名《Go 入门指南》",
+                            "url": "https://github.com/unknwon/the-way-to-go_ZH_CN/blob/master/eBook/directory.md",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Go语言圣经",
+                            "desc": "Go语言圣经 《The Go Programming Language》 中文版本",
+                            "url": "https://yar999.gitbook.io/gopl-zh/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Go WEB 编程",
+                            "desc": "Golang电子书介绍如何使用Golang建立网络",
+                            "url": "https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Go简易教程",
+                            "desc": "《The Little Go Book》中文译本，中文正式名《Go简易教程》",
+                            "url": "https://github.com/songleo/the-little-go-book_ZH_CN",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Go by Example 中文版",
+                            "desc": "Go by Example 是对 Go 基于实践的介绍，包含一系列带有注释说明的示例程序。",
+                            "url": "https://gobyexample-cn.github.io/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Go语言之旅",
+                            "desc": "本指南涵盖了该语言的大部分重要特性，主要包括：基础、方法和接口、并发等",
+                            "url": "https://tour.go-zh.org/welcome/1",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Go语言101",
+                            "desc": "一本着墨于Go语法语义以及运行时相关知识点的编程指导书（Go 1.15就绪）。 此书旨在尽可能地帮助Go程序员更深更全面地理解Go语言",
+                            "url": "https://gfw.go101.org/article/101.html",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Go语言高级编程",
+                            "desc": "本书涵盖CGO、Go汇编语言、RPC实现、Web框架实现、分布式系统等高阶主题，针对Go语言有一定经验想深入了解Go语言各种高级用法的开发人员(不推荐新手)",
+                            "url": "https://chai2010.cn/advanced-go-programming-book/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Mastering GO",
+                            "desc": "《Mastering GO》中文译本，《玩转 GO》。",
+                            "url": "https://github.com/hantmac/Mastering_Go_ZH_CN",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Mastering GO2",
+                            "desc": "Mastering Go 第二版中文版来袭！",
+                            "url": "https://github.com/hantmac/Mastering_Go_Second_Edition_Zh_CN",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                },
+                {
+                    "title": "其他",
+                    "itemNav": [
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "100天从新手到大师",
+                            "desc": "Golang - 100天从新手到大师",
+                            "url": "https://www.qfgolang.com/",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "project-layout",
+                            "desc": "Go标准布局结构，项目架构结构参考。",
+                            "url": "https://github.com/golang-standards/project-layout/blob/master/README_zh.md",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "编码规范",
+                            "desc": "Uber Go 语言编码规范",
+                            "url": "https://github.com/xxjwxc/uber_go_guide_cn",
+                            "createdAt": "2021-01-23"
+                        },
+                        {
+                            "icon": "https://avatars1.githubusercontent.com/u/4314092?s=200&v=4",
+                            "name": "Gin实战",
+                            "desc": "WEB 框架Gin实战",
+                            "url": "https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3MjU4Njk3Ng==&action=getalbum&album_id=1362784031968149504&scene=173#wechat_redirect",
+                            "createdAt": "2021-01-23"
+                        }
+                    ],
+                    "createdAt": "2021-01-23"
+                }
+            ],
+            "createdAt": "2021-01-23"
+        }
+    ],
+    "createdAt": "2021-01-23"
+}
