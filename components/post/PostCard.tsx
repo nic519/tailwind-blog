@@ -31,50 +31,30 @@ const IconComponent = ({ iconName }: { iconName: string }) => {
       try {
         let iconModule;
         let iconComponent;
+        const iconPackages = {
+          io: () => import("react-icons/io"),
+          io5: () => import("react-icons/io5"),
+          ri: () => import("react-icons/ri"),
+          fa: () => import("react-icons/fa"),
+          lia: () => import("react-icons/lia"),
+          md: () => import("react-icons/md"),
+          tb: () => import("react-icons/tb"),
+          gi: () => import("react-icons/gi"),
+        };
 
-        switch (prefix) {
-          case "io":
-            iconModule = await import("react-icons/io");
+        const importFunction =
+          iconPackages[prefix as keyof typeof iconPackages];
+        if (importFunction) {
+          try {
+            iconModule = await importFunction();
             iconComponent = iconModule[name];
             if (iconComponent) setIcon(() => iconComponent);
-            break;
-          case "io5":
-            iconModule = await import("react-icons/io5");
-            iconComponent = iconModule[name];
-            if (iconComponent) setIcon(() => iconComponent);
-            break;
-          case "ri":
-            iconModule = await import("react-icons/ri");
-            iconComponent = iconModule[name];
-            if (iconComponent) setIcon(() => iconComponent);
-            break;
-          case "fa":
-            iconModule = await import("react-icons/fa");
-            iconComponent = iconModule[name];
-            if (iconComponent) setIcon(() => iconComponent);
-            break;
-          case "lia":
-            iconModule = await import("react-icons/lia");
-            iconComponent = iconModule[name];
-            if (iconComponent) setIcon(() => iconComponent);
-            break;
-          case "md":
-            iconModule = await import("react-icons/md");
-            iconComponent = iconModule[name];
-            if (iconComponent) setIcon(() => iconComponent);
-            break;
-          case "tb":
-            iconModule = await import("react-icons/tb");
-            iconComponent = iconModule[name];
-            if (iconComponent) setIcon(() => iconComponent);
-            break;
-          case "gi":
-            iconModule = await import("react-icons/gi");
-            iconComponent = iconModule[name];
-            if (iconComponent) setIcon(() => iconComponent);
-            break;
-          default:
+          } catch (error) {
+            console.error(`Failed to load icon: ${iconName}`, error);
             setIcon(null);
+          }
+        } else {
+          setIcon(null);
         }
       } catch (error) {
         console.error(`Failed to load icon: ${iconName}`, error);
