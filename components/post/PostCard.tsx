@@ -1,11 +1,10 @@
-"use client";
-import React from "react";
 import Link from "@/components/Link";
 import Tag from "@/components/post/Tag";
 import siteMetadata from "@/data/siteMetadata";
 import { formatDate } from "pliny/utils/formatDate";
 import Image from "next/image";
 import { getRandomColor } from "@/components/post/Tag";
+import { ShowIcon } from "@/components/post/ShowIcon";
 
 export type Post = {
   slug: string;
@@ -15,61 +14,6 @@ export type Post = {
   tags: string[];
   cover?: string;
   icon?: string;
-};
-
-const IconComponent = ({ iconName }: { iconName: string }) => {
-  const [Icon, setIcon] = React.useState<React.ComponentType<{
-    className: string;
-  }> | null>(null);
-
-  React.useEffect(() => {
-    const loadIcon = async () => {
-      if (!iconName) return;
-
-      const [prefix, name] = iconName.split(":");
-
-      try {
-        let iconModule;
-        let iconComponent;
-        const iconPackages = {
-          io: () => import("react-icons/io"),
-          io5: () => import("react-icons/io5"),
-          ri: () => import("react-icons/ri"),
-          fa: () => import("react-icons/fa"),
-          lia: () => import("react-icons/lia"),
-          md: () => import("react-icons/md"),
-          tb: () => import("react-icons/tb"),
-          gi: () => import("react-icons/gi"),
-        };
-
-        const importFunction =
-          iconPackages[prefix as keyof typeof iconPackages];
-        if (importFunction) {
-          try {
-            iconModule = await importFunction();
-            iconComponent = iconModule[name];
-            if (iconComponent) setIcon(() => iconComponent);
-          } catch (error) {
-            console.error(`Failed to load icon: ${iconName}`, error);
-            setIcon(null);
-          }
-        } else {
-          setIcon(null);
-        }
-      } catch (error) {
-        console.error(`Failed to load icon: ${iconName}`, error);
-        setIcon(null);
-      }
-    };
-
-    loadIcon();
-  }, [iconName]);
-
-  if (!Icon) return null;
-
-  return (
-    <Icon className="w-32 h-32 text-white/70 dark:text-white/60 transition-transform duration-300 group-hover:scale-105" />
-  );
 };
 
 export default function PostCard({ post }: { post: Post }) {
@@ -98,12 +42,12 @@ export default function PostCard({ post }: { post: Post }) {
           ) : icon ? (
 
             <div
-              className={`w-full h-full relative flex items-center justify-center `}
+              className={`w-full h-full relative flex items-center justify-center`}
               style={{ 
-                backgroundColor: `${getRandomColor(icon)}`  // 4D = 30% 透明度, 80 = 50% 透明度
+                backgroundColor: `${getRandomColor(icon)}`
               }}
             >
-              <IconComponent iconName={icon} />
+              <ShowIcon iconName={icon} color="text-white dark:text-white/70" />
             </div>
 
           ) : (

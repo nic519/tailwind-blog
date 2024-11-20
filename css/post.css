@@ -67,9 +67,8 @@
 
   .article-title-wrapper {
     position: relative;
-    padding-bottom: 2rem;
   }
-
+/* 
   .article-title-wrapper::after {
     content: '';
     position: absolute;
@@ -79,5 +78,5 @@
     width: 16rem;
     border-radius: 9999px;
     background: var(--main-gradient);
-  }
+  } */
 }
