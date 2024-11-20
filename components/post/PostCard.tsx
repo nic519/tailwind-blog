@@ -5,7 +5,7 @@ import Tag from "@/components/post/Tag";
 import siteMetadata from "@/data/siteMetadata";
 import { formatDate } from "pliny/utils/formatDate";
 import Image from "next/image";
-import { getColorForTag } from "@/components/post/Tag";
+import { getRandomColor } from "@/components/post/Tag";
 
 export type Post = {
   slug: string;
@@ -68,7 +68,7 @@ const IconComponent = ({ iconName }: { iconName: string }) => {
   if (!Icon) return null;
 
   return (
-    <Icon className="w-32 h-32 text-black/70 dark:text-white/90 transition-transform duration-300 group-hover:scale-105" />
+    <Icon className="w-32 h-32 text-white/70 dark:text-white/60 transition-transform duration-300 group-hover:scale-105" />
   );
 };
 
@@ -86,18 +86,26 @@ export default function PostCard({ post }: { post: Post }) {
       <Link href={`/blog/${slug}`} className="block">
         <div className="overflow-hidden relative h-64 w-full">
           {cover ? (
-            <Image
-              src={cover}
-              alt={title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
+            <>
+              <Image
+                src={cover}
+                alt={title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/30 dark:from-gray-800/90 from-0% via-transparent via-60%"></div>
+            </>
           ) : icon ? (
+
             <div
-              className={`w-full h-full ${getColorForTag(icon)} relative flex items-center justify-center`}
+              className={`w-full h-full relative flex items-center justify-center `}
+              style={{ 
+                backgroundColor: `${getRandomColor(icon)}`  // 4D = 30% 透明度, 80 = 50% 透明度
+              }}
             >
               <IconComponent iconName={icon} />
             </div>
+
           ) : (
             <Image
               src="/static/images/default-cover.jpg"
@@ -106,7 +114,6 @@ export default function PostCard({ post }: { post: Post }) {
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/90 dark:from-gray-800/90 from-0% via-transparent via-60%"></div>
         </div>
 
         <div className="relative p-6 -mt-16 z-1">
