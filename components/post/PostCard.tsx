@@ -42,12 +42,12 @@ export default function PostCard({ post }: { post: Post }) {
           ) : icon ? (
 
             <div
-              className={`w-full h-full relative flex items-center justify-center`}
-              style={{ 
-                backgroundColor: `${getRandomColor(icon)}`
-              }}
+              className={`w-full h-full bg-[#45B39D]/50 dark:bg-[#45B39D]/30 relative flex items-center justify-center`}
+              // style={{ 
+              //   backgroundColor: `${getRandomColor(icon)}`
+              // }}
             >
-              <ShowIcon iconName={icon} color="text-white dark:text-white/70" />
+              <ShowIcon iconName={icon} color="text-black/60 dark:text-white/80" />
             </div>
 
           ) : (

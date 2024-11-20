@@ -51,12 +51,13 @@ export default function PostLayout({
         <article>
           <div className="xl:space-y-0">
             {/* 文章头部 */}
-            <header className="pt-6 xl:pb-6">
+            <header className="pt-6">
               <div className="space-y-10">
 
-                <div className="relative pb-8 flex items-center gap-4">
+                <div className="relative flex items-center gap-4">
+                  {/* 桌面端图标 */}
                   {icon && (
-                    <div className="w-[160px] aspect-square mr-4 flex-shrink-0">
+                    <div className="hidden md:block w-[160px] aspect-square mr-4 flex-shrink-0">
                       <div className={`
                         group 
                         w-full h-full 
@@ -66,20 +67,20 @@ export default function PostLayout({
                         p-4 
                         border border-gray-200/80 dark:border-gray-800/50
                         dark:shadow-gray-900/20
-                            bg-gray-50/80 dark:bg-gray-800/30
-                            backdrop-blur-[2px]
-                          `}
-                      >
+                        bg-gray-50/80 dark:bg-gray-800/30
+                        backdrop-blur-[2px]
+                      `}>
                         <ShowIcon iconName={icon} color='text-gray-800/85 dark:text-gray-100/90' />
                       </div>
                     </div>
                   )}
                   <div className="article-title-wrapper">
+                    
                     <PageTitle>{title}</PageTitle>
                     
                     <div className="flex flex-wrap items-center gap-3 pt-4">
                       {tags && tags.map((tag) => <Tag text={tag} key={tag} />)}
-                      <span className="text-gray-400 dark:text-gray-500">·</span>
+                      
                       <time
                         dateTime={date}
                         className="text-base font-medium text-gray-500 dark:text-gray-400"
@@ -105,6 +106,25 @@ export default function PostLayout({
                 prose-img:rounded-lg
                 w-full"
                 >
+                  {/* 移动端图标 */}
+                  {icon && (
+                      <div className="md:hidden w-full  mx-auto my-6">
+                        <div className={`
+                          group 
+                          w-full h-full 
+                          relative flex items-center justify-center 
+                          rounded-xl
+                          shadow-sm 
+                          p-4 
+                          border border-gray-200/80 dark:border-gray-800/50
+                          dark:shadow-gray-900/20
+                          bg-gray-50/80 dark:bg-gray-800/30
+                          backdrop-blur-[2px]
+                        `}>
+                        <ShowIcon iconName={icon} color='text-gray-800/85 dark:text-gray-100/90' />
+                      </div>
+                    </div>
+                  )}
                   {children}
                 </div>
 
