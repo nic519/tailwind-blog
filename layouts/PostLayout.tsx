@@ -14,8 +14,6 @@ import 'css/post.css'
 import MobileTOC from '@/components/post/MobileTOC'
 import GradientBackground from '@/components/GradientBackground'
 import { ShowIcon } from '@/components/post/ShowIcon'
-import { getRandomColor } from '@/components/post/Tag'
-import { useTheme } from 'next-themes'
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
@@ -42,10 +40,8 @@ export default function PostLayout({
   next,
   prev,
   children,
-}: LayoutProps) {
-  const { theme } = useTheme()
+}: LayoutProps) { 
   const { filePath, path, slug, date, title, tags, toc, icon } = content
-  const basePath = path.split('/')[0]
   // console.log('toc=', toc)
 
   return (
@@ -62,13 +58,14 @@ export default function PostLayout({
                   {icon && (
                     <div className="w-[160px] aspect-square mr-4 flex-shrink-0">
                       <div className={`
-                            w-full h-full 
-                            relative flex items-center justify-center 
-                            rounded-xl
-                            shadow-sm
-                            transition-all duration-300 ease-in-out
-                            p-4 
-                            dark:shadow-gray-900/20
+                        group 
+                        w-full h-full 
+                        relative flex items-center justify-center 
+                        rounded-xl
+                        shadow-sm 
+                        p-4 
+                        border border-gray-200/80 dark:border-gray-800/50
+                        dark:shadow-gray-900/20
                             bg-gray-50/80 dark:bg-gray-800/30
                             backdrop-blur-[2px]
                           `}

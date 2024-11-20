@@ -33,7 +33,12 @@ const ThemeSwitch2 = () => {
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme, setTheme } = useTheme()
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    setMounted(true)
+    if (!localStorage.getItem('theme')) {
+      setTheme('dark')
+    }
+  }, [])
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
