@@ -5,8 +5,10 @@ export const ShowIcon = ({ iconName, color }: { iconName: string, color: string 
     const [Icon, setIcon] = React.useState<React.ComponentType<{
       className: string;
     }> | null>(null);
+    const [isLoading, setIsLoading] = React.useState(true);
   
     React.useEffect(() => {
+      setIsLoading(true);
       const loadIcon = async () => {
         if (!iconName) return;
   
@@ -43,12 +45,92 @@ export const ShowIcon = ({ iconName, color }: { iconName: string, color: string 
         } catch (error) {
           console.error(`Failed to load icon: ${iconName}`, error);
           setIcon(null);
+        } finally {
+          setIsLoading(false);
         }
       };
   
       loadIcon();
     }, [iconName]);
   
+    if (isLoading) {
+      return (
+        <svg
+          className={`w-32 h-32 ${color}`}
+          viewBox="0 0 60 20"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+        >
+          <circle cx="8" cy="10" r="8">
+            <animate
+              attributeName="r"
+              from="8"
+              to="8"
+              begin="0s"
+              dur="0.8s"
+              values="8;5;8"
+              calcMode="linear"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="fill-opacity"
+              from="1"
+              to="1"
+              begin="0s"
+              dur="0.8s"
+              values="1;.5;1"
+              calcMode="linear"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle cx="30" cy="10" r="5" fillOpacity="0.3">
+            <animate
+              attributeName="r"
+              from="5"
+              to="5"
+              begin="0s"
+              dur="0.8s"
+              values="5;8;5"
+              calcMode="linear"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="fill-opacity"
+              from="0.5"
+              to="0.5"
+              begin="0s"
+              dur="0.8s"
+              values=".5;1;.5"
+              calcMode="linear"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle cx="52" cy="10" r="8">
+            <animate
+              attributeName="r"
+              from="8"
+              to="8"
+              begin="0s"
+              dur="0.8s"
+              values="8;5;8"
+              calcMode="linear"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="fill-opacity"
+              from="1"
+              to="1"
+              begin="0s"
+              dur="0.8s"
+              values="1;.5;1"
+              calcMode="linear"
+              repeatCount="indefinite"
+            />
+          </circle>
+        </svg>
+      );
+    }
+
     if (!Icon) return null;
 
     return (
