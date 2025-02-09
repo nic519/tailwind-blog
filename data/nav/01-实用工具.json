@@ -261,14 +261,7 @@
                             "desc": "国内最大的在线接口管理服务方案供应商",
                             "url": "https://www.eolinker.com/",
                             "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "https://avatars2.githubusercontent.com/u/19645609?s=200&v=4",
-                            "name": "YApi",
-                            "desc": "YApi 是一个可本地部署的、打通前后端及QA的、可视化的接口管理平台",
-                            "url": "https://yapi.baidu.com/",
-                            "createdAt": "2021-01-23"
-                        },
+                        }, 
                         {
                             "icon": "http://rap2.taobao.org/favicon.png",
                             "name": "RAP2",
@@ -303,21 +296,7 @@
                             "desc": "易于维护的开源文档网站",
                             "url": "https://docusaurus.io/",
                             "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "https://www.zentao.net/favicon.ico",
-                            "name": "禅道",
-                            "desc": "禅道是灵活的项目管理软件",
-                            "url": "https://www.zentao.net/",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "https://www.tapd.cn/favicon.ico",
-                            "name": "Tapd",
-                            "desc": "一站式敏捷研发协作云平台, 凝聚腾讯研发方法及敏捷实践精髓, 助力企业研发更高效、协作更敏捷",
-                            "url": "https://www.tapd.cn/",
-                            "createdAt": "2021-01-23"
-                        },
+                        }, 
                         {
                             "icon": "https://avatars2.githubusercontent.com/u/56705483?s=200&v=4",
                             "name": "Hoppscotch",
