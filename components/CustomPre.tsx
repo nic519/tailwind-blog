@@ -95,7 +95,7 @@ const CustomPre = (props: CustomPreProps) => {
   }
 
   // 其他代码块使用原来的 Pre 组件
-  return <Pre {...props} />
+  return <Pre>{props.children}</Pre>
 }
 
 export default CustomPre
