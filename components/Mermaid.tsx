@@ -125,7 +125,7 @@ const Mermaid = ({ chart, config }: MermaidProps) => {
             themeConfig.themeVariables = isDark
               ? {
                 // 深色主题：使用深色节点配浅色文本，确保高对比度
-                primaryColor: '#475569', // 中深灰蓝色
+                primaryColor: '#1E90FF', // 中深灰蓝色
                 primaryTextColor: '#f1f5f9', // 浅色文本，高对比度
                 primaryBorderColor: '#64748b', // 中等亮度的边框
 
@@ -147,7 +147,7 @@ const Mermaid = ({ chart, config }: MermaidProps) => {
               }
               : {
                 // 浅色主题：使用浅色节点配深色文本，确保高对比度
-                primaryColor: '#cbd5e1', // 浅灰蓝色
+                primaryColor: '#ffffff', // 浅灰蓝色
                 primaryTextColor: '#1e293b', // 深色文本，高对比度
                 primaryBorderColor: '#94a3b8', // 中等深度的边框
 
