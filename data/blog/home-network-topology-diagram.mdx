@@ -2,7 +2,7 @@
 title: 中国家庭的网络拓扑图最佳实践
 abbrlink: home-network-topology-diagram
 date: 2025-11-28 18:50:00
-icon: 'tb:TbLocationBolt'
+icon: "tb:TbLocationBolt"
 categories:
   - 原创
 tags:
@@ -18,16 +18,18 @@ config:
   theme: neo
 ---
 mindmap
-  root(1. 光猫🐱 - 内置拨号)
-    2. 软路由🐙 - 旁路由模式
+  1. 光猫🐱<br />内置拨号
+    2. 软路由🐙旁路由模式<br />新网段接管DHCP
       3. 交换机 🕷️
         电脑 🖥️
-        路由器 1️⃣ - 有线中继
+        路由器 1️⃣<br />有线中继
           手机📱
           电脑 🖥️
           家庭设备
-        路由器 2️⃣ - 有线中继（组Mesh）
+        路由器 2️⃣ <br />有线中继/组Mesh
 ```
+
 方案亮点：
+
 1. 最简单，如果软路由层面有问题，则直接把它去掉，让交换机直连光猫即可正常使用，排查问题快
 2. 所有设备可以通过软路由层面实现分流，设备端无需做任何设置

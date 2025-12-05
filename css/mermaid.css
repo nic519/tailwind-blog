@@ -1,143 +1,31 @@
-/**
- * Mermaid 图表样式
- * 简洁高档的样式设计
- */
+/* Mermaid 容器与基础样式 */
 
-/* 容器 - 优雅居中，适当间距 */
 .mermaid-container {
-    isolation: isolate;
-    width: 100%;
-    max-width: 800px;
-    margin: 2.5rem auto;
-    padding: 1.5rem 0;
+  isolation: isolate;
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0.5rem 0;
 }
 
-/* SVG 响应式 - 流畅自适应 */
 .mermaid-container svg {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-/* 在 prose 环境中保持居中 */
-.prose .mermaid-container,
-.prose-invert .mermaid-container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* 文本颜色和字体大小 - 统一为 14px */
-/* 浅色主题：深色文本 */
-.mermaid-container svg foreignObject p,
-.mermaid-container svg foreignObject p * {
-    color: rgb(30, 41, 59);
-    /* 深蓝灰色，在浅色背景下 */
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-    font-weight: 400;
-}
-
-/* 深色主题：浅色文本 */
-.dark .mermaid-container svg foreignObject p,
-.dark .mermaid-container svg foreignObject p * {
-    color: rgb(241, 245, 249);
-    /* 柔和的浅灰白色，在深色背景下 */
-}
-
-/* 根节点文本颜色 - 浅色主题 */
-.mermaid-container svg [class*="section-root"] foreignObject p,
-.mermaid-container svg [class*="section-root"] foreignObject p * {
-    color: rgb(255, 255, 255);
-    /* 白色文本，确保在深色节点上可读 */
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-    font-weight: 500;
-}
-
-/* 根节点文本颜色 - 深色主题 */
-.dark .mermaid-container svg [class*="section-root"] foreignObject p,
-.dark .mermaid-container svg [class*="section-root"] foreignObject p * {
-    color: rgb(241, 245, 249);
-    /* 柔和的浅色文本 */
-}
-
-/* 确保 SVG text 和 tspan 元素也使用统一字体大小 */
-.mermaid-container svg text,
-.mermaid-container svg tspan {
-    font-size: 14px !important;
-}
-
-/* 确保 nodeLabel 类的元素（包含编号文本）也使用统一字体大小 */
-.mermaid-container svg .nodeLabel,
-.mermaid-container svg [class*="nodeLabel"],
-.mermaid-container svg foreignObject .nodeLabel,
-.mermaid-container svg foreignObject [class*="nodeLabel"],
-.mermaid-container svg foreignObject p .nodeLabel,
-.mermaid-container svg foreignObject p [class*="nodeLabel"],
-.mermaid-container svg foreignObject p span {
-    font-size: 14px !important;
-}
-
-/* 覆盖 prose 样式 - 浅色主题 */
-.prose .mermaid-container svg foreignObject p,
-.prose .mermaid-container svg foreignObject p * {
-    color: rgb(30, 41, 59);
-    /* 深蓝灰色 */
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-}
-
-/* 覆盖 prose 样式 - 深色主题 */
-.prose-invert .mermaid-container svg foreignObject p,
-.prose-invert .mermaid-container svg foreignObject p *,
-.dark .prose .mermaid-container svg foreignObject p,
-.dark .prose .mermaid-container svg foreignObject p * {
-    color: rgb(241, 245, 249);
-    /* 柔和的浅色文本 */
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-}
-
-/* 根节点文本 - 浅色主题 */
-.prose .mermaid-container svg [class*="section-root"] foreignObject p,
-.prose .mermaid-container svg [class*="section-root"] foreignObject p * {
-    color: rgb(255, 255, 255);
-    /* 白色文本 */
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-}
-
-/* 根节点文本 - 深色主题 */
-.prose-invert .mermaid-container svg [class*="section-root"] foreignObject p,
-.prose-invert .mermaid-container svg [class*="section-root"] foreignObject p *,
-.dark .prose .mermaid-container svg [class*="section-root"] foreignObject p,
-.dark .prose .mermaid-container svg [class*="section-root"] foreignObject p * {
-    color: rgb(241, 245, 249);
-    /* 柔和的浅色文本 */
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-}
-
-/* 确保 foreignObject 正常显示 */
 .mermaid-container svg foreignObject {
-    overflow: visible;
+  overflow: visible;
 }
 
-/* 添加阴影效果，提升层次感 */
-.mermaid-container svg [class*="section-"] {
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+.mermaid-container svg foreignObject p {
+  transform: none !important;
+  white-space: normal !important;
 }
 
-/* 暗色模式下的阴影效果 */
-.dark .mermaid-container svg [class*="section-"] {
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
-}
-
-/* neo 主题：移除所有圆角，特别是底部圆角，让节点更加简洁高档 */
+/* neo 主题：移除圆角 */
 .mermaid-container svg [class*="section-"] rect {
-    rx: 0 !important;
-    ry: 0 !important;
+  rx: 0 !important;
+  ry: 0 !important;
 }
