@@ -31,9 +31,12 @@ export interface MermaidThemeVariables {
   [key: string]: string | undefined;
 }
 
+export type MermaidTheme = "default" | "base" | "dark" | "forest" | "neutral" | "null";
+export type MermaidSecurityLevel = "loose" | "strict" | "sandbox" | "antiscript";
+
 export interface MermaidThemeConfig {
   startOnLoad: boolean;
-  securityLevel: string;
-  theme: string;
+  securityLevel: MermaidSecurityLevel;
+  theme: MermaidTheme;
   themeVariables?: MermaidThemeVariables;
 }

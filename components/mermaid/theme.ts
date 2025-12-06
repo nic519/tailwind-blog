@@ -42,43 +42,43 @@ const createNeoThemeConfig = (isDark: boolean): MermaidThemeVariables => {
   const fontSize = getBodyFontSize();
   return isDark
     ? {
-        // 深色主题：深色背景 + 深色节点 + 浅色文本（高对比度）
-        // 使用 Tailwind slate-950 作为背景，slate-100 作为文本
-        primaryColor: tailwindColors.slate[500], // sky-500: 主色调
-        primaryTextColor: tailwindColors.slate[100], // slate-100: 浅色文本
-        secondaryColor: tailwindColors.slate[500], // slate-500: 次要色
-        tertiaryColor: tailwindColors.slate[400], // slate-400: 第三色
-        background: tailwindColors.slate[950], // slate-950: 深色背景
-        mainBkg: tailwindColors.slate[600], // slate-600: 主背景色（官方字段名）
-        secondBkg: tailwindColors.slate[500], // slate-500: 次背景色（官方字段名）
-        textColor: tailwindColors.slate[100], // slate-100: 文本色
-        lineColor: tailwindColors.slate[500], // slate-500: 线条色
-        cScale0: tailwindColors.slate[600], // slate-600: 颜色刻度 0
-        cScale1: tailwindColors.slate[500], // slate-500: 颜色刻度 1
-        cScale2: tailwindColors.slate[400], // slate-400: 颜色刻度 2
-        cScale3: tailwindColors.slate[300], // slate-300: 颜色刻度 3
-        fontSize: fontSize,
-        fontFamily: "inherit",
-      }
+      // 深色主题：深色背景 + 深色节点 + 浅色文本（高对比度）
+      // 使用 Tailwind slate-950 作为背景，slate-100 作为文本
+      primaryColor: tailwindColors.slate[500], // sky-500: 主色调
+      primaryTextColor: tailwindColors.slate[100], // slate-100: 浅色文本
+      secondaryColor: tailwindColors.slate[500], // slate-500: 次要色
+      tertiaryColor: tailwindColors.slate[400], // slate-400: 第三色
+      background: tailwindColors.slate[950], // slate-950: 深色背景
+      mainBkg: tailwindColors.slate[600], // slate-600: 主背景色（官方字段名）
+      secondBkg: tailwindColors.slate[500], // slate-500: 次背景色（官方字段名）
+      textColor: tailwindColors.slate[100], // slate-100: 文本色
+      lineColor: tailwindColors.slate[500], // slate-500: 线条色
+      cScale0: tailwindColors.slate[600], // slate-600: 颜色刻度 0
+      cScale1: tailwindColors.slate[500], // slate-500: 颜色刻度 1
+      cScale2: tailwindColors.slate[400], // slate-400: 颜色刻度 2
+      cScale3: tailwindColors.slate[300], // slate-300: 颜色刻度 3
+      fontSize: fontSize,
+      fontFamily: "inherit",
+    }
     : {
-        // 浅色主题：浅色背景 + 浅色节点 + 深色文本（高对比度）
-        // 使用 Tailwind white 作为背景，slate-800 作为文本
-        primaryColor: tailwindColors.white, // white: 主色调
-        primaryTextColor: tailwindColors.slate[800], // slate-800: 深色文本
-        secondaryColor: tailwindColors.slate[400], // slate-400: 次要色
-        tertiaryColor: tailwindColors.slate[500], // slate-500: 第三色
-        background: tailwindColors.white, // white: 浅色背景
-        mainBkg: tailwindColors.slate[300], // slate-300: 主背景色（官方字段名）
-        secondBkg: tailwindColors.slate[200], // slate-200: 次背景色（官方字段名）
-        textColor: tailwindColors.slate[800], // slate-800: 文本色
-        lineColor: tailwindColors.slate[300], // slate-300: 线条色
-        cScale0: tailwindColors.slate[300], // slate-300: 颜色刻度 0
-        cScale1: tailwindColors.slate[200], // slate-200: 颜色刻度 1
-        cScale2: tailwindColors.slate[100], // slate-100: 颜色刻度 2
-        cScale3: tailwindColors.slate[50], // slate-50: 颜色刻度 3
-        fontSize: fontSize,
-        fontFamily: "inherit",
-      };
+      // 浅色主题：浅色背景 + 浅色节点 + 深色文本（高对比度）
+      // 使用 Tailwind white 作为背景，slate-800 作为文本
+      primaryColor: tailwindColors.white, // white: 主色调
+      primaryTextColor: tailwindColors.slate[800], // slate-800: 深色文本
+      secondaryColor: tailwindColors.slate[400], // slate-400: 次要色
+      tertiaryColor: tailwindColors.slate[500], // slate-500: 第三色
+      background: tailwindColors.white, // white: 浅色背景
+      mainBkg: tailwindColors.slate[300], // slate-300: 主背景色（官方字段名）
+      secondBkg: tailwindColors.slate[200], // slate-200: 次背景色（官方字段名）
+      textColor: tailwindColors.slate[800], // slate-800: 文本色
+      lineColor: tailwindColors.slate[300], // slate-300: 线条色
+      cScale0: tailwindColors.slate[300], // slate-300: 颜色刻度 0
+      cScale1: tailwindColors.slate[200], // slate-200: 颜色刻度 1
+      cScale2: tailwindColors.slate[100], // slate-100: 颜色刻度 2
+      cScale3: tailwindColors.slate[50], // slate-50: 颜色刻度 3
+      fontSize: fontSize,
+      fontFamily: "inherit",
+    };
 };
 
 /**
@@ -91,10 +91,24 @@ export const createMermaidThemeConfig = (
   const fontSize = getBodyFontSize();
   const isDark = resolvedTheme === "dark";
 
+  // 将主题值转换为 Mermaid 支持的主题类型
+  const normalizeTheme = (t: string): "default" | "base" | "dark" | "forest" | "neutral" | "null" => {
+    if (t === "neo") return "base";
+    const validThemes: ("default" | "base" | "dark" | "forest" | "neutral" | "null")[] = [
+      "default",
+      "base",
+      "dark",
+      "forest",
+      "neutral",
+      "null",
+    ];
+    return validThemes.includes(t as any) ? (t as any) : "default";
+  };
+
   const baseConfig: MermaidThemeConfig = {
     startOnLoad: false,
-    securityLevel: "loose",
-    theme: theme === "neo" ? "base" : theme,
+    securityLevel: "loose" as const,
+    theme: normalizeTheme(theme),
   };
 
   if (theme === "neo") {
