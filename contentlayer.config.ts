@@ -124,9 +124,22 @@ export const Blog = defineDocumentType(() => ({
       type: 'string',
       default: 'Blog', // 默认值为 'Blog'
     },
+    password: {
+      type: 'json',
+      required: false,
+    },
   },
   computedFields: {
     ...computedFields,
+    password: {
+      type: 'string',
+      resolve: (doc) => {
+        // 从 fields 中读取 password（可能是数字或字符串），转换为字符串
+        // fields 中定义为 json 类型，所以这里需要转换
+        const password = (doc as any).password
+        return password != null ? String(password) : undefined
+      },
+    },
     structuredData: {
       type: 'json',
       resolve: (doc) => ({

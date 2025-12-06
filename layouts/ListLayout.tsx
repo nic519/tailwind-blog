@@ -8,6 +8,7 @@ import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/post/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import EncryptedBadge from '@/components/post/EncryptedBadge'
 
 interface PaginationProps {
   totalPages: number
@@ -125,7 +126,9 @@ export default function ListLayout({
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((post) => {
-            const { path, date, title, summary, tags } = post
+            const { path, date, title, summary, tags, password } = post
+            const showEncryptedLabel =
+              siteMetadata.encryptedPostsDisplay === 'withLabel' && password
             return (
               <li key={path} className="py-4">
                 <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
@@ -147,8 +150,9 @@ export default function ListLayout({
                           {title}
                         </Link>
                       </h3>
-                      <div className="flex flex-wrap">
+                      <div className="flex flex-wrap items-center gap-2">
                         {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                        {showEncryptedLabel && <EncryptedBadge />}
                       </div>
                     </div>
                     <div className="prose max-w-none text-gray-500 dark:text-gray-400">

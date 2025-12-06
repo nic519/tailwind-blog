@@ -17,6 +17,7 @@ import PostBanner from '@/layouts/PostBanner'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
+import ProtectedPost from '@/components/ProtectedPost'
 
 const defaultLayout = 'PostLayout'
 const layouts = {
@@ -112,7 +113,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 
   const Layout = layouts[post.layout || defaultLayout]
 
-  return (
+  const postContent = (
     <>
       <script
         type="application/ld+json"
@@ -132,4 +133,14 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
       </Layout>
     </>
   )
+
+  // 如果文章有密码，使用 ProtectedPost 包装
+  const postPassword = (post as any).password
+  if (postPassword) {
+    return (
+      <ProtectedPost password={postPassword}>{postContent}</ProtectedPost>
+    )
+  }
+
+  return postContent
 }

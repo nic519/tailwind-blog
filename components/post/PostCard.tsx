@@ -5,6 +5,7 @@ import { formatDate } from "pliny/utils/formatDate";
 import Image from "next/image";
 import { getRandomColor } from "@/components/post/Tag";
 import { ShowIcon } from "@/components/post/ShowIcon";
+import EncryptedBadge from "@/components/post/EncryptedBadge";
 
 export type Post = {
   slug: string;
@@ -14,10 +15,13 @@ export type Post = {
   tags: string[];
   cover?: string;
   icon?: string;
+  password?: string;
 };
 
 export default function PostCard({ post }: { post: Post }) {
-  const { slug, date, title, summary, tags, cover, icon } = post;
+  const { slug, date, title, summary, tags, cover, icon, password } = post;
+  const showEncryptedLabel =
+    siteMetadata.encryptedPostsDisplay === 'withLabel' && password;
 
   return (
     <article
@@ -43,9 +47,9 @@ export default function PostCard({ post }: { post: Post }) {
 
             <div
               className={`w-full h-full bg-[#45B39D]/50 dark:bg-[#45B39D]/30 relative flex items-center justify-center`}
-              // style={{ 
-              //   backgroundColor: `${getRandomColor(icon)}`
-              // }}
+            // style={{ 
+            //   backgroundColor: `${getRandomColor(icon)}`
+            // }}
             >
               <ShowIcon iconName={icon} color="text-black/60 dark:text-white/80" />
             </div>
@@ -65,6 +69,7 @@ export default function PostCard({ post }: { post: Post }) {
             {tags.map((tag) => (
               <Tag key={tag} text={tag} />
             ))}
+            {showEncryptedLabel && <EncryptedBadge />}
           </div>
 
           <h2 className="text-xl font-bold pt-4 mb-3 text-gray-900 dark:text-gray-100 line-clamp-2">

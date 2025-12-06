@@ -98,6 +98,8 @@ const siteMetadata = {
     //   indexName: 'docsearch',
     // },
   },
+  // 加密文章显示模式: 'withLabel' 在列表页显示加密标签，其他值或不设置则正常显示
+  encryptedPostsDisplay: 'withLabel',
 }
 
 module.exports = siteMetadata

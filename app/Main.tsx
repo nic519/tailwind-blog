@@ -3,6 +3,7 @@ import Tag from '@/components/post/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
+import EncryptedBadge from '@/components/post/EncryptedBadge'
 
 const MAX_DISPLAY = 5
 
@@ -21,7 +22,9 @@ export default function Home({ posts }) {
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags } = post
+            const { slug, date, title, summary, tags, password } = post
+            const showEncryptedLabel =
+              siteMetadata.encryptedPostsDisplay === 'withLabel' && password
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -45,10 +48,11 @@ export default function Home({ posts }) {
                               {title}
                             </Link>
                           </h2>
-                          <div className="flex flex-wrap">
+                          <div className="flex flex-wrap items-center gap-2">
                             {tags.map((tag) => (
                               <Tag key={tag} text={tag} />
                             ))}
+                            {showEncryptedLabel && <EncryptedBadge />}
                           </div>
                         </div>
                         <div className="prose max-w-none text-gray-500 dark:text-gray-400">

@@ -10,6 +10,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/post/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
+import EncryptedBadge from '@/components/post/EncryptedBadge'
 
 interface PaginationProps {
   totalPages: number
@@ -145,7 +146,9 @@ export default function ListLayoutWithTags({
           <div className="divide-y divide-gray-200 pb-8 transition-colors dark:divide-gray-700 lg:col-span-4">
             <ul>
               {displayPosts.map((post) => {
-                const { path, date, title, summary, tags } = post
+                const { path, date, title, summary, tags, password } = post
+                const showEncryptedLabel =
+                  siteMetadata.encryptedPostsDisplay === 'withLabel' && password
                 return (
                   <li key={path} className="py-5">
                     <article className="flex flex-col space-y-2 xl:space-y-0">
@@ -167,8 +170,9 @@ export default function ListLayoutWithTags({
                               {title}
                             </Link>
                           </h2>
-                          <div className="flex flex-wrap">
+                          <div className="flex flex-wrap items-center gap-2">
                             {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                            {showEncryptedLabel && <EncryptedBadge />}
                           </div>
                         </div>
                         <div className="prose max-w-none text-gray-500 dark:text-gray-400">
