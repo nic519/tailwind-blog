@@ -18,6 +18,7 @@ import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
 import ProtectedPost from '@/components/ProtectedPost'
+import { Suspense } from 'react'
 
 const defaultLayout = 'PostLayout'
 const layouts = {
@@ -138,7 +139,9 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   const postPassword = (post as any).password
   if (postPassword) {
     return (
-      <ProtectedPost password={postPassword}>{postContent}</ProtectedPost>
+      <Suspense fallback={<div>加载中...</div>}>
+        <ProtectedPost password={postPassword}>{postContent}</ProtectedPost>
+      </Suspense>
     )
   }
 
