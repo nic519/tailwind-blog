@@ -1,0 +1,14 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table td:first-child,
+.table th:first-child {
+  white-space: nowrap;
+}
+
+.table td:last-child,
+.table th:last-child {
+  white-space: nowrap;
+}

@@ -6,14 +6,14 @@
   :root {
     --main-gradient: linear-gradient(
       to right,
-      theme('colors.primary.500'),
+      theme("colors.primary.500"),
       #ef4444
     );
     --main-gradient1: linear-gradient(
-      to bottom right,  /* 或者用度数 '135deg' 也可以 */
-      theme('colors.primary.300'),
-      theme('colors.primary.600')
-    ); 
+      to bottom right,
+      /* 或者用度数 '135deg' 也可以 */ theme("colors.primary.300"),
+      theme("colors.primary.600")
+    );
   }
 }
 
@@ -25,7 +25,7 @@
   }
 
   .gradient-line-after::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -68,7 +68,8 @@
   .article-title-wrapper {
     position: relative;
   }
-/* 
+
+  /* 
   .article-title-wrapper::after {
     content: '';
     position: absolute;
