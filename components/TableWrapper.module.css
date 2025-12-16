@@ -7,8 +7,3 @@
 .table th:first-child {
   white-space: nowrap;
 }
-
-.table td:last-child,
-.table th:last-child {
-  white-space: nowrap;
-}
