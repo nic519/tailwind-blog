@@ -4,20 +4,18 @@
 
 @layer base {
   :root {
-    --main-gradient: linear-gradient(
-      to right,
-      theme("colors.primary.500"),
-      #ef4444
-    );
-    --main-gradient1: linear-gradient(
-      to bottom right,
-      /* 或者用度数 '135deg' 也可以 */ theme("colors.primary.300"),
-      theme("colors.primary.600")
-    );
+    --main-gradient: linear-gradient(to right,
+        theme("colors.primary.500"),
+        #ef4444);
+    --main-gradient1: linear-gradient(to bottom right,
+        /* 或者用度数 '135deg' 也可以 */
+        theme("colors.primary.300"),
+        theme("colors.primary.600"));
   }
 }
 
 @layer components {
+
   /* 创建一个通用的渐变横线样式 */
   .gradient-line-after {
     position: relative;
@@ -65,19 +63,42 @@
     width: 4rem;
   }
 
+  /* FloatImage 组件的响应式浮动 */
+  .prose .float-image-left {
+    float: none;
+    display: block;
+  }
+
+  .prose .float-image-right {
+    float: none;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .prose .float-image-left {
+      float: left;
+      margin-right: 1rem;
+    }
+
+    .prose .float-image-right {
+      float: right;
+      margin-left: 1rem;
+    }
+  }
+
+  /* 标题不自动清除浮动，允许文字和图片在同一行 */
+  /* 如果需要清除浮动，可以在元素前添加空行或使用 <div className="clear-float"></div> */
+
+  /* 清除浮动工具类 */
+  .prose .clearfix::after,
+  .clear-float::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   .article-title-wrapper {
     position: relative;
   }
 
-  /* 
-  .article-title-wrapper::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 0.20rem;
-    width: 16rem;
-    border-radius: 9999px;
-    background: var(--main-gradient);
-  } */
 }
