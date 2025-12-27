@@ -8,13 +8,6 @@
                     "title": "开发神器",
                     "itemNav": [
                         {
-                            "name": "Github-CLI",
-                            "createdAt": "2021-02-18",
-                            "desc": "GitHub的官方命令行工具",
-                            "icon": "https://github.githubassets.com/favicons/favicon.svg",
-                            "url": "https://cli.github.com/"
-                        },
-                        {
                             "name": "Coveralls",
                             "icon": "https://coveralls.io/favicon.png",
                             "url": "https://coveralls.io/",
@@ -261,7 +254,7 @@
                             "desc": "国内最大的在线接口管理服务方案供应商",
                             "url": "https://www.eolinker.com/",
                             "createdAt": "2021-01-23"
-                        }, 
+                        },
                         {
                             "icon": "http://rap2.taobao.org/favicon.png",
                             "name": "RAP2",
@@ -296,7 +289,7 @@
                             "desc": "易于维护的开源文档网站",
                             "url": "https://docusaurus.io/",
                             "createdAt": "2021-01-23"
-                        }, 
+                        },
                         {
                             "icon": "https://avatars2.githubusercontent.com/u/56705483?s=200&v=4",
                             "name": "Hoppscotch",
@@ -664,125 +657,6 @@
                         }
                     ],
                     "createdAt": "2021-01-23"
-                },
-                {
-                    "title": "远程控制",
-                    "itemNav": [
-                        {
-                            "icon": "https://www.teamviewer.cn/wp-content/themes/tv-wordpress-theme/dist/media/favicon.png",
-                            "name": "TeamViewer",
-                            "desc": "TeamViewer远程连接控制软件是一款随时随地连接到远程桌面电脑、移动设备及Iot,让远程连接过程更加的快速和安全,轻松实现对文件、网络及程序的实时支持或访问。",
-                            "url": "https://www.teamviewer.cn/",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "https://sunlogin.oray.com/favicon.ico",
-                            "name": "向日葵",
-                            "desc": "向日葵远程控制软件是一款免费的集远程控制电脑手机、远程桌面连接、远程开机、远程管理、支持内网穿透的一体化远程控制管理工具软件",
-                            "url": "https://sunlogin.oray.com/",
-                            "createdAt": "2021-01-23"
-                        }
-                    ],
-                    "createdAt": "2021-01-23"
-                },
-                {
-                    "title": "飞机场",
-                    "itemNav": [
-                        {
-                            "icon": "https://avatars0.githubusercontent.com/u/14110142?s=200&v=4",
-                            "name": "v2ray",
-                            "desc": "用于构建代理绕过网络限制的平台。",
-                            "url": "https://github.com/v2ray/v2ray-core",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "https://github.com/Dreamacro/clash/raw/master/docs/logo.png",
-                            "name": "clash",
-                            "desc": "Go中基于规则的隧道",
-                            "url": "https://github.com/Dreamacro/clash",
-                            "createdAt": "2021-01-23"
-                        }
-                    ],
-                    "createdAt": "2021-01-23"
-                }
-            ],
-            "createdAt": "2021-01-23"
-        },
-        {
-            "title": "影视/音乐",
-            "nav": [
-                {
-                    "title": "影视",
-                    "itemNav": [
-                        {
-                            "icon": "https://www.bilibili.com/favicon.ico",
-                            "name": "哔哩哔哩",
-                            "desc": "国内知名的视频弹幕网站，这里有最及时的动漫新番，最棒的ACG氛围，最有创意的Up主",
-                            "url": "https://www.bilibili.com/",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "https://www.iqiyipic.com/common/images/PCW-114x114.png",
-                            "name": "爱奇艺",
-                            "desc": "拥有海量、优质、高清的网络视频的大型视频网站，专业的网络视频播放平台",
-                            "url": "https://www.iqiyi.com/",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "https://www.youtube.com/favicon.ico",
-                            "name": "Youtube",
-                            "desc": "全球最大的视频网站",
-                            "url": "https://www.youtube.com/",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "https://www.douyu.com/favicon.ico",
-                            "name": "斗鱼",
-                            "desc": "斗鱼 - 每个人的直播平台",
-                            "url": "https://www.douyu.com/",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "https://cdn.jsdelivr.net/gh/txxxjs/fk/ifkdy/2020-03-16/favicon.ico",
-                            "name": "疯狂影视搜索",
-                            "desc": "疯狂影视搜索是一款全能影视搜索引擎，帮你找到最新影视资源，一站拥有无尽影视资源",
-                            "url": "http://ifkdy.com/",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "http://www.qmaile.com/favicon.ico",
-                            "name": "全民vip视频在线解析",
-                            "desc": "免费全网VIP视频会员免广告看电影！优酷vip解析，爱奇艺vip解析，腾讯vip解析，乐视vip解析，芒果vip解析",
-                            "url": "http://www.qmaile.com/",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
-                            "icon": "https://qncdnimg.aoscdn.com/local/beecut.cn/img/favicon.png",
-                            "name": "蜜蜂剪辑",
-                            "desc": "免费在线视频剪辑、视频制作、视频剪切、视频转gif等实用功能",
-                            "url": "https://beecut.cn/online-video-editor",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
-                            "name": "kk高清影院",
-                            "desc": "kk高清影院,1080p电影下载,高清电影迅雷下载,免费高清电影网",
-                            "url": "http://www.kk3.tv/",
-                            "createdAt": "2021-01-23"
-                        }
-                    ],
-                    "createdAt": "2021-01-23"
-                },
-                {
-                    "title": "音乐",
-                    "itemNav": [
-                        {
-                            "name": "自由的音乐",
-                            "desc": "自由的音乐是一个免费试听并下载全网音乐的网站",
-                            "url": "https://www.tikitiki.cn/",
-                            "createdAt": "2021-01-23"
-                        }
-                    ],
-                    "createdAt": "2021-01-23"
                 }
             ],
             "createdAt": "2021-01-23"
@@ -978,8 +852,7 @@
                             "desc": "10分钟邮箱，临时邮箱，临时邮，临时电子邮箱，24小时邮箱，一次性邮箱，匿名邮箱，安全邮箱",
                             "url": "https://www.linshiyouxiang.net/",
                             "createdAt": "2021-01-23"
-                        }
-                        ,
+                        },
                         {
                             "icon": "https://ik.imagekit.io/rehres/sites/10/2023/05/13125034/redirhub_logo_light.png",
                             "name": "Redirection Service",

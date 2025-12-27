@@ -77,13 +77,6 @@
                             "createdAt": "2021-01-23"
                         },
                         {
-                            "icon": "https://p1.ssl.qhimg.com/t010e845cdf71587354.png",
-                            "name": "众成翻译",
-                            "desc": "中国最好的技术翻译社区，最懂译者的翻译平台，奇虎360最大前端团队“奇舞团”出品",
-                            "url": "https://zcfy.cc/",
-                            "createdAt": "2021-01-23"
-                        },
-                        {
                             "icon": "https://developer.mozilla.org/favicon.ico",
                             "name": "MDN web docs",
                             "desc": "Mozilla 开发者社区，是一个完整的学习平台，你可以在这里深入学习Web技术以及能够驱动Web的软件",

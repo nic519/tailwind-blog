@@ -1,7 +1,7 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: "Nicholas' blog | Next.js",
-  author: 'Nicholas',
+  title: "Nicholas' blog",
+  author: 'Nicholas Zhu',
   headerTitle: "Nicholas' blog",
   description:
     'A blog created with Next.js and Tailwind.css by AI (Cursor) ...',
@@ -11,17 +11,9 @@ const siteMetadata = {
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
-  mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'address@yoursite.com',
   github: 'https://github.com',
-  x: 'https://twitter.com/x',
-  // twitter: 'https://twitter.com/Twitter',
-  facebook: 'https://facebook.com',
-  youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
-  threads: 'https://www.threads.net',
-  instagram: 'https://www.instagram.com',
-  medium: 'https://medium.com',
+  x: 'https://twitter.com/x', 
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
   stickyNav: false,
