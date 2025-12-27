@@ -3,6 +3,7 @@ title: 中国家庭的网络拓扑图最佳实践
 abbrlink: home-network-topology-diagram
 date: 2025-11-28 18:50:00
 icon: "tb:TbLocationBolt"
+# cover: https://s2.loli.net/2025/12/27/b6TSZR4kAzjJ3Iw.png
 categories:
   - 原创
 tags:

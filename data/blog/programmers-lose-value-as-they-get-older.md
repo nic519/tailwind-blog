@@ -9,10 +9,11 @@ cover: https://s2.loli.net/2025/12/27/b6TSZR4kAzjJ3Iw.png
 summary: 这家全员在家办公的独角兽公司上市了。无论“元宇宙上班”什么时候来临，倒是有一家没有线下办公室的公司已经通过上市证明办公室不是一定需要的。
 --- 
 
-<FloatImage src="https://s2.loli.net/2025/12/27/b6TSZR4kAzjJ3Iw.png" alt="程序员" align="right" />
+
 
 ## 1. 类比工地搬砖的，个人多数只是一个环节而已
 
+<FloatImage src="https://s2.loli.net/2025/12/27/b6TSZR4kAzjJ3Iw.png" alt="程序员" align="right" />
 
 如果我们分析一下那些“越老越吃香”的职业，比如医生、律师、老师等，我们会发现如下特点：
 

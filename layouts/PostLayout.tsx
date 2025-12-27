@@ -40,7 +40,7 @@ export default function PostLayout({
   next,
   prev,
   children,
-}: LayoutProps) { 
+}: LayoutProps) {
   const { filePath, path, slug, date, title, tags, toc, icon } = content
   // console.log('toc=', toc)
 
@@ -75,12 +75,12 @@ export default function PostLayout({
                     </div>
                   )}
                   <div className="article-title-wrapper">
-                    
+
                     <PageTitle>{title}</PageTitle>
-                    
+
                     <div className="flex flex-wrap items-center gap-3 pt-4">
                       {tags && tags.map((tag) => <Tag text={tag} key={tag} />)}
-                      
+
                       <time
                         dateTime={date}
                         className="text-base font-medium text-gray-500 dark:text-gray-400"
@@ -94,7 +94,7 @@ export default function PostLayout({
             </header>
 
             {/* 文章主体 */}
-            <div className="pb-8 pt-0 lg:grid lg:grid-cols-12 lg:gap-x-8">
+            <div className="pb-8 pt-4 md:pt-6 lg:grid lg:grid-cols-12 lg:gap-x-8">
               {/* 文章内容区 */}
               <div className="lg:col-span-9">
                 <div id="article-content"
@@ -108,8 +108,8 @@ export default function PostLayout({
                 >
                   {/* 移动端图标 */}
                   {icon && (
-                      <div className="md:hidden w-full  mx-auto my-6">
-                        <div className={`
+                    <div className="md:hidden w-full  mx-auto my-6">
+                      <div className={`
                           group 
                           w-full h-full 
                           relative flex items-center justify-center 
