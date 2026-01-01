@@ -12,7 +12,7 @@ tags:
 summary: 回答儿子关于伟人的定义。
 ---
 
-<FloatImage src="https://s2.loli.net/2025/12/27/Q8wBLefdmA6jq7k.png" alt="奥特曼" maxWidth={500} align="right" />
+<FloatImage src="https://s2.loli.net/2025/12/27/Q8wBLefdmA6jq7k.png" alt="什么样的人可以称为伟人？" maxWidth={500} align="right" />
 
 > 我儿子在昨天问我，什么样的人可以称为伟人？
 
