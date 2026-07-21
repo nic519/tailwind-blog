@@ -28,6 +28,7 @@ import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import remarkNumberedHeadings from './remarkNumberedHeadings.mjs'
+import { getBlogPath, getBlogSlug } from './lib/contentRouting.mjs'
 
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
@@ -61,6 +62,11 @@ const computedFields: ComputedFields = {
   },
   toc: { type: 'json', resolve: (doc) => extractTocHeadings(doc.body.raw) },
 }
+
+const getBlogRouteSource = (doc) => ({
+  abbrlink: doc.abbrlink,
+  sourceFileName: doc._raw.sourceFileName,
+})
 
 /**
  * Count the occurrences of all tags across blog posts and write to json file
@@ -109,6 +115,7 @@ export const Blog = defineDocumentType(() => ({
       required: false, // 设置为可选字段
     },
     title: { type: 'string', required: true },
+    abbrlink: { type: 'string', required: false },
     date: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' }, default: [] },
     lastmod: { type: 'date' },
@@ -131,6 +138,14 @@ export const Blog = defineDocumentType(() => ({
   },
   computedFields: {
     ...computedFields,
+    slug: {
+      type: 'string',
+      resolve: (doc) => getBlogSlug(getBlogRouteSource(doc)),
+    },
+    path: {
+      type: 'string',
+      resolve: (doc) => getBlogPath(getBlogRouteSource(doc)),
+    },
     password: {
       type: 'string',
       resolve: (doc) => {
@@ -150,7 +165,7 @@ export const Blog = defineDocumentType(() => ({
         dateModified: doc.lastmod || doc.date,
         description: doc.summary,
         image: doc.cover || doc.images?.[0] || siteMetadata.socialBanner, // 更新图片优先级
-        url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
+        url: `${siteMetadata.siteUrl}/${getBlogPath(getBlogRouteSource(doc))}`,
       }),
     },
   },
