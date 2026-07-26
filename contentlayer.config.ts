@@ -1,11 +1,6 @@
-import {
-  defineDocumentType,
-  ComputedFields,
-  makeSource,
-} from 'contentlayer2/source-files'
+import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer2/source-files'
 import { writeFileSync } from 'fs'
 import readingTime from 'reading-time'
-import { slug } from 'github-slugger'
 import path from 'path'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 // Remark packages
@@ -26,12 +21,12 @@ import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
-import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
+import { allCoreContent, type MDXBlog } from 'pliny/utils/contentlayer.js'
 import remarkNumberedHeadings from './remarkNumberedHeadings.mjs'
 import { getBlogPath, getBlogSlug } from './lib/contentRouting.mjs'
+import { createArticleCatalog } from './lib/articles/catalog.mjs'
 
 const root = process.cwd()
-const isProduction = process.env.NODE_ENV === 'production'
 
 // heroicon mini link
 const icon = fromHtmlIsomorphic(
@@ -68,34 +63,16 @@ const getBlogRouteSource = (doc) => ({
   sourceFileName: doc._raw.sourceFileName,
 })
 
-/**
- * Count the occurrences of all tags across blog posts and write to json file
- */
-function createTagCount(allBlogs) {
-  const tagCount: Record<string, number> = {}
-  allBlogs.forEach((file) => {
-    if (file.tags && (!isProduction || file.draft !== true)) {
-      file.tags.forEach((tag) => {
-        const formattedTag = slug(tag)
-        if (formattedTag in tagCount) {
-          tagCount[formattedTag] += 1
-        } else {
-          tagCount[formattedTag] = 1
-        }
-      })
-    }
-  })
-  writeFileSync('./app/tag-data.json', JSON.stringify(tagCount))
-}
+type SearchArticle = MDXBlog & { slug: string; path: string }
 
-function createSearchIndex(allBlogs) {
+function createSearchIndex(allBlogs: SearchArticle[]) {
   if (
     siteMetadata?.search?.provider === 'kbar' &&
     siteMetadata.search.kbarConfig.searchDocumentsPath
   ) {
     writeFileSync(
       `public/${path.basename(siteMetadata.search.kbarConfig.searchDocumentsPath)}`,
-      JSON.stringify(allCoreContent(sortPosts(allBlogs)))
+      JSON.stringify(allCoreContent(createArticleCatalog(allBlogs).all()))
     )
     console.log('Local search index generated...')
   }
@@ -118,12 +95,12 @@ export const Blog = defineDocumentType(() => ({
     abbrlink: { type: 'string', required: false },
     date: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' }, default: [] },
+    categories: { type: 'list', of: { type: 'string' }, default: [] },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
     summary: { type: 'string' },
     images: { type: 'json' },
     authors: { type: 'list', of: { type: 'string' } },
-    layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
     type: {
@@ -132,7 +109,7 @@ export const Blog = defineDocumentType(() => ({
       default: 'Blog', // 默认值为 'Blog'
     },
     password: {
-      type: 'json',
+      type: 'string',
       required: false,
     },
   },
@@ -146,15 +123,6 @@ export const Blog = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => getBlogPath(getBlogRouteSource(doc)),
     },
-    password: {
-      type: 'string',
-      resolve: (doc) => {
-        // 从 fields 中读取 password（可能是数字或字符串），转换为字符串
-        // fields 中定义为 json 类型，所以这里需要转换
-        const password = (doc as any).password
-        return password != null ? String(password) : undefined
-      },
-    },
     structuredData: {
       type: 'json',
       resolve: (doc) => ({
@@ -164,6 +132,7 @@ export const Blog = defineDocumentType(() => ({
         datePublished: doc.date,
         dateModified: doc.lastmod || doc.date,
         description: doc.summary,
+        articleSection: doc.categories?.[0],
         image: doc.cover || doc.images?.[0] || siteMetadata.socialBanner, // 更新图片优先级
         url: `${siteMetadata.siteUrl}/${getBlogPath(getBlogRouteSource(doc))}`,
       }),
@@ -191,6 +160,7 @@ export const Authors = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'data',
+  contentDirExclude: ['draft', 'nav'],
   documentTypes: [Blog, Authors],
 
   mdx: {
@@ -224,7 +194,6 @@ export default makeSource({
   },
   onSuccess: async (importData) => {
     const { allBlogs } = await importData()
-    createTagCount(allBlogs)
     createSearchIndex(allBlogs)
   },
 })

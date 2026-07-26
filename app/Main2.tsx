@@ -4,7 +4,6 @@ import Link from '@/components/Link'
 import siteMetadata from '@/data/siteMetadata'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import { useState, useEffect, useCallback } from 'react'
-// import PostCardFill from '@/components/post/PostCardFill'
 import PostCard from '@/components/post/PostCard'
 import GradientBackground from '@/components/GradientBackground'
 
@@ -26,7 +25,7 @@ export default function Home2({ posts }) {
     }, 50)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [fullText])
 
   return (
     <GradientBackground>

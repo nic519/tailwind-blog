@@ -1,5 +1,4 @@
-'use client'
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
 import Comments from '@/components/Comments'
@@ -34,31 +33,24 @@ interface LayoutProps {
   children: ReactNode
 }
 
-export default function PostLayout({
-  content,
-  authorDetails,
-  next,
-  prev,
-  children,
-}: LayoutProps) {
+export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
   const { filePath, path, slug, date, title, tags, toc, icon } = content
   // console.log('toc=', toc)
 
   return (
     <GradientBackground enableGrid={true} className="min-h-screen">
-
       <SectionContainer>
         <article>
           <div className="xl:space-y-0">
             {/* 文章头部 */}
             <header className="pt-6">
               <div className="space-y-10">
-
                 <div className="relative flex items-center gap-4">
                   {/* 桌面端图标 */}
                   {icon && (
                     <div className="hidden md:block w-[160px] aspect-square mr-4 flex-shrink-0">
-                      <div className={`
+                      <div
+                        className={`
                         group 
                         w-full h-full 
                         relative flex items-center justify-center 
@@ -69,13 +61,13 @@ export default function PostLayout({
                         dark:shadow-gray-900/20
                         bg-gray-50/80 dark:bg-gray-800/30
                         backdrop-blur-[2px]
-                      `}>
-                        <ShowIcon iconName={icon} color='text-gray-800/85 dark:text-gray-100/90' />
+                      `}
+                      >
+                        <ShowIcon iconName={icon} color="text-gray-800/85 dark:text-gray-100/90" />
                       </div>
                     </div>
                   )}
                   <div className="article-title-wrapper">
-
                     <PageTitle>{title}</PageTitle>
 
                     <div className="flex flex-wrap items-center gap-3 pt-4">
@@ -97,7 +89,8 @@ export default function PostLayout({
             <div className="pb-8 pt-4 md:pt-6 lg:grid lg:grid-cols-12 lg:gap-x-8">
               {/* 文章内容区 */}
               <div className="lg:col-span-9">
-                <div id="article-content"
+                <div
+                  id="article-content"
                   className="prose max-w-none pb-8 pt-0 
                 dark:prose-invert prose-h2:relative prose-h2:pb-3 
                 prose-blockquote:border-primary-500
@@ -109,7 +102,8 @@ export default function PostLayout({
                   {/* 移动端图标 */}
                   {icon && (
                     <div className="md:hidden w-full  mx-auto my-6">
-                      <div className={`
+                      <div
+                        className={`
                           group 
                           w-full h-full 
                           relative flex items-center justify-center 
@@ -120,8 +114,9 @@ export default function PostLayout({
                           dark:shadow-gray-900/20
                           bg-gray-50/80 dark:bg-gray-800/30
                           backdrop-blur-[2px]
-                        `}>
-                        <ShowIcon iconName={icon} color='text-gray-800/85 dark:text-gray-100/90' />
+                        `}
+                      >
+                        <ShowIcon iconName={icon} color="text-gray-800/85 dark:text-gray-100/90" />
                       </div>
                     </div>
                   )}
@@ -169,7 +164,10 @@ export default function PostLayout({
 
                   {/* 评论区 */}
                   {siteMetadata.comments && (
-                    <div className="border-t border-gray-200/50 dark:border-gray-800/50 py-8" id="comment">
+                    <div
+                      className="border-t border-gray-200/50 dark:border-gray-800/50 py-8"
+                      id="comment"
+                    >
                       <Comments slug={slug} />
                     </div>
                   )}
@@ -178,7 +176,6 @@ export default function PostLayout({
 
               {/* 侧边栏 */}
               <aside className="hidden lg:block lg:col-span-3">
-
                 {/* 作者信息 */}
                 <dl className="pb-8 xl:pt-0">
                   <dt className="sr-only">Authors</dt>
@@ -197,9 +194,7 @@ export default function PostLayout({
                           )}
                           <dl className="whitespace-nowrap text-sm font-medium leading-5">
                             <dt className="sr-only">Name</dt>
-                            <dd className="text-gray-900 dark:text-gray-100">
-                              {author.name}
-                            </dd>
+                            <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
                             <dt className="sr-only">Twitter</dt>
                             <dd>
                               {author.twitter && (
@@ -207,7 +202,8 @@ export default function PostLayout({
                                   href={author.twitter}
                                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                                 >
-                                  {author.twitter.replace('https://twitter.com/', '@')
+                                  {author.twitter
+                                    .replace('https://twitter.com/', '@')
                                     .replace('https://x.com/', '@')}
                                 </Link>
                               )}
@@ -220,8 +216,10 @@ export default function PostLayout({
                 </dl>
 
                 {/* 桌面端 TOC */}
-                <div className="lg:sticky lg:top-10 rounded-xl backdrop-blur-md
-                 bg-white/70 dark:bg-gray-950/20 py-4 px-6 shadow-lg ring-1 ring-black/5 dark:ring-white/5">
+                <div
+                  className="lg:sticky lg:top-10 rounded-xl backdrop-blur-md
+                 bg-white/70 dark:bg-gray-950/20 py-4 px-6 shadow-lg ring-1 ring-black/5 dark:ring-white/5"
+                >
                   <TableOfContents source={toc} />
                 </div>
               </aside>

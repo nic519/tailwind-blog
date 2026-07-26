@@ -10,6 +10,8 @@ interface MobileNavTOCProps {
   panelPosition: { bottom: string; right: string }
   maxHeight: string
   width: string
+  activeId: string
+  navigate: (id: string) => void
 }
 
 export default function MobileNavTOC({
@@ -17,7 +19,9 @@ export default function MobileNavTOC({
   buttonPosition,
   panelPosition,
   maxHeight,
-  width
+  width,
+  activeId,
+  navigate,
 }: MobileNavTOCProps) {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -25,6 +29,8 @@ export default function MobileNavTOC({
     <>
       {/* 悬浮按钮 */}
       <button
+        type="button"
+        aria-label={isOpen ? '关闭导航目录' : '打开导航目录'}
         onClick={() => setIsOpen(!isOpen)}
         className={`fixed z-50 p-3 text-gray-600 bg-white/70 dark:bg-gray-800/70 
           dark:text-gray-200 rounded-full shadow-lg backdrop-blur-md 
@@ -32,7 +38,7 @@ export default function MobileNavTOC({
           hover:bg-gray-100 dark:hover:bg-gray-700/70 transition-colors`}
         style={{
           bottom: buttonPosition.bottom,
-          right: buttonPosition.right
+          right: buttonPosition.right,
         }}
       >
         <HiOutlineMenuAlt2 className="w-6 h-6" />
@@ -42,11 +48,13 @@ export default function MobileNavTOC({
       {isOpen && (
         <>
           {/* 背景遮罩 */}
-          <div
+          <button
+            type="button"
+            aria-label="关闭导航目录"
             className="fixed inset-0 bg-black/20 dark:bg-black/50 backdrop-blur-sm z-40 lg:hidden"
             onClick={() => setIsOpen(false)}
           />
-          
+
           {/* TOC 面板 */}
           <div
             className="fixed z-50 lg:hidden"
@@ -54,15 +62,16 @@ export default function MobileNavTOC({
               bottom: panelPosition.bottom,
               right: panelPosition.right,
               maxHeight: maxHeight,
-              width: width
+              width: width,
             }}
           >
-            <div className="backdrop-blur-md bg-white/70 dark:bg-gray-950/20 
+            <div
+              className="backdrop-blur-md bg-white/70 dark:bg-gray-950/20
               rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/5 
               overflow-hidden"
             >
               <div className="p-4 overflow-y-auto" style={{ maxHeight }}>
-                <NavTOC navItems={navItems} />
+                <NavTOC navItems={navItems} activeId={activeId} navigate={navigate} />
               </div>
             </div>
           </div>
@@ -70,4 +79,4 @@ export default function MobileNavTOC({
       )}
     </>
   )
-} 
+}

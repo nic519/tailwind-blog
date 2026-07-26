@@ -2,7 +2,6 @@
 'use client'
 import clsx from 'clsx'
 import GithubSlugger from 'github-slugger'
-import { list } from 'postcss'
 // import { useTranslation } from 'next-i18next';
 import { useEffect, useRef, useState } from 'react'
 
@@ -22,7 +21,6 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
       }, headingElementsRef.current)
 
       const visibleHeadings: IntersectionObserverEntry[] = []
-      console.log('headingElementsRef.current=', headingElementsRef.current)
       Object.keys(headingElementsRef.current).forEach((key) => {
         const headingElement = headingElementsRef.current[key]
         if (headingElement.isIntersecting) visibleHeadings.push(headingElement)
@@ -46,9 +44,7 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
       rootMargin: '0px 0px -70% 0px',
     })
 
-    const headingElements = Array.from(
-      document.querySelectorAll('article h2,h3,h4')
-    )
+    const headingElements = Array.from(document.querySelectorAll('article h2,h3,h4'))
 
     headingElements.forEach((element) => observer.observe(element))
 
@@ -67,7 +63,6 @@ interface TOCProps {
 
 export default function TableOfContents({ source, isMobile = false }: TOCProps) {
   const slugger = new GithubSlugger()
-  console.log('source=', source)
   const headings = source.map((item) => {
     return {
       text: item.value,
@@ -96,10 +91,7 @@ export default function TableOfContents({ source, isMobile = false }: TOCProps) 
   }
 
   return (
-    <div className={clsx(
-      'text-sm', 
-      isMobile ? 'max-h-[50vh] overflow-auto' : ''
-    )}>
+    <div className={clsx('text-sm', isMobile ? 'max-h-[50vh] overflow-auto' : '')}>
       <p className="mb-5 text-lg font-semibold text-gray-900 transition-colors dark:text-gray-100">
         目录
       </p>

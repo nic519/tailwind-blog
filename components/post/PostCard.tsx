@@ -1,27 +1,26 @@
-import Link from "@/components/Link";
-import Tag from "@/components/post/Tag";
-import siteMetadata from "@/data/siteMetadata";
-import { formatDate } from "pliny/utils/formatDate";
-import Image from "next/image";
-import { getRandomColor } from "@/components/post/Tag";
-import { ShowIcon } from "@/components/post/ShowIcon";
-import EncryptedBadge from "@/components/post/EncryptedBadge";
+import Link from '@/components/Link'
+import Tag from '@/components/post/Tag'
+import siteMetadata from '@/data/siteMetadata'
+import { formatDate } from 'pliny/utils/formatDate'
+import Image from 'next/image'
+import { getRandomColor } from '@/components/post/Tag'
+import { ShowIcon } from '@/components/post/ShowIcon'
+import ReadingGateBadge from '@/components/post/ReadingGateBadge'
 
 export type Post = {
-  slug: string;
-  date: string;
-  title: string;
-  summary: string;
-  tags: string[];
-  cover?: string;
-  icon?: string;
-  password?: string;
-};
+  slug: string
+  date: string
+  title: string
+  summary: string
+  tags: string[]
+  cover?: string
+  icon?: string
+  password?: string
+}
 
 export default function PostCard({ post }: { post: Post }) {
-  const { slug, date, title, summary, tags, cover, icon, password } = post;
-  const showEncryptedLabel =
-    siteMetadata.encryptedPostsDisplay === 'withLabel' && password;
+  const { slug, date, title, summary, tags, cover, icon, password } = post
+  const showReadingGateLabel = siteMetadata.readingGateDisplay === 'withLabel' && password
 
   return (
     <article
@@ -44,16 +43,14 @@ export default function PostCard({ post }: { post: Post }) {
               <div className="absolute inset-0 bg-gradient-to-t from-white/30 dark:from-gray-800/90 from-0% via-transparent via-60%"></div>
             </>
           ) : icon ? (
-
             <div
               className={`w-full h-full bg-[#45B39D]/50 dark:bg-[#45B39D]/30 relative flex items-center justify-center`}
-            // style={{ 
-            //   backgroundColor: `${getRandomColor(icon)}`
-            // }}
+              // style={{
+              //   backgroundColor: `${getRandomColor(icon)}`
+              // }}
             >
               <ShowIcon iconName={icon} color="text-black/60 dark:text-white/80" />
             </div>
-
           ) : (
             <Image
               src="/static/images/default-cover.jpg"
@@ -69,16 +66,14 @@ export default function PostCard({ post }: { post: Post }) {
             {tags.map((tag) => (
               <Tag key={tag} text={tag} />
             ))}
-            {showEncryptedLabel && <EncryptedBadge />}
+            {showReadingGateLabel && <ReadingGateBadge />}
           </div>
 
           <h2 className="text-xl font-bold pt-4 mb-3 text-gray-900 dark:text-gray-100 line-clamp-2">
             {title}
           </h2>
 
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-            {summary}
-          </p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">{summary}</p>
 
           <div className="flex justify-between items-center text-sm">
             <time className="text-primary-500 dark:text-primary-400">
@@ -88,5 +83,5 @@ export default function PostCard({ post }: { post: Post }) {
         </div>
       </Link>
     </article>
-  );
+  )
 }

@@ -144,7 +144,7 @@ I wanted it to be nearly as feature-rich as popular blogging templates like [bea
 - Automatic image optimization via [next/image](https://nextjs.org/docs/basic-features/image-optimization)
 - Support for tags - each unique tag will be its own page
 - Support for multiple authors
-- 3 different blog layouts
+- A single article layout with shared metadata, navigation, comments, and table of contents
 - 2 different blog listing layouts
 - Support for nested routing of blog posts
 - Projects page
@@ -225,10 +225,10 @@ Edit the layout in `app` or content in `data`. With live reloading, the pages au
 
 `components/MDXComponents.js` - pass your own JSX code or React component by specifying it over here. You can then use them directly in the `.mdx` or `.md` file. By default, a custom link, `next/image` component, table of contents component and Newsletter form are passed down. Note that the components should be default exported to avoid [existing issues with Next.js](https://github.com/vercel/next.js/issues/51593).
 
-`layouts` - main templates used in pages:
+`layouts` - the article and listing presentation modules used by pages:
 
-- There are currently 3 post layouts available: `PostLayout`, `PostSimple` and `PostBanner`. `PostLayout` is the default 2 column layout with meta and author information. `PostSimple` is a simplified version of `PostLayout`, while `PostBanner` features a banner image.
-- There are 2 blog listing layouts: `ListLayout`, the layout used in version 1 of the template with a search bar and `ListLayoutWithTags`, currently used in version 2, which omits the search bar but includes a sidebar with information on the tags.
+- `PostLayout` owns the shared article presentation, including metadata, navigation, comments, and table of contents.
+- `ListLayoutWithTags` owns the published article list and tag navigation.
 
 `app` - pages to route to. Read the [Next.js documentation](https://nextjs.org/docs/app) for more information.
 
@@ -248,12 +248,13 @@ Please refer to `contentlayer.config.ts` for an up to date list of supported fie
 title (required)
 date (required)
 tags (optional)
+categories (optional editorial provenance or format)
 lastmod (optional)
 draft (optional)
 summary (optional)
 images (optional)
 authors (optional list which should correspond to the file names in `data/authors`. Uses `default` if none is specified)
-layout (optional list which should correspond to the file names in `data/layouts`)
+password (optional reading gate; it discourages accidental access but does not encrypt the article)
 canonicalUrl (optional, canonical url for the post for SEO)
 ```
 
@@ -269,7 +270,6 @@ draft: false
 summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
 images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
 authors: ['default', 'sparrowhawk']
-layout: PostLayout
 canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-tailwind-nextjs-starter-blog
 ---
 ```

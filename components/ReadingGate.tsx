@@ -1,29 +1,37 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { createReadingGate } from '@/lib/readingGate.mjs'
+import { FormEvent, ReactNode, useEffect, useMemo, useState } from 'react'
 
-interface PasswordProtectionProps {
-  correctPassword: string
-  onSuccess: () => void
+interface ReadingGateProps {
+  password: string
+  children: ReactNode
 }
 
-export default function PasswordProtection({
-  correctPassword,
-  onSuccess,
-}: PasswordProtectionProps) {
-  const [password, setPassword] = useState('')
+export default function ReadingGate({ password, children }: ReadingGateProps) {
+  const gate = useMemo(() => createReadingGate(password), [password])
+  const [attempt, setAttempt] = useState('')
   const [error, setError] = useState('')
+  const [isUnlocked, setIsUnlocked] = useState(false)
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setError('')
+  useEffect(() => {
+    const result = gate.readUrl(window.location.href)
+    if (!result.unlocked) return
 
-    if (password === correctPassword) {
-      onSuccess()
-    } else {
-      setError('密码错误，请重试')
+    setIsUnlocked(true)
+    if (result.cleanUrl) {
+      window.history.replaceState(window.history.state, '', result.cleanUrl)
     }
+  }, [gate])
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const result = gate.attempt(attempt)
+    setError(result.error ?? '')
+    setIsUnlocked(result.unlocked)
   }
+
+  if (isUnlocked) return <>{children}</>
 
   return (
     <div className="flex min-h-[60vh] items-center justify-center">
@@ -35,6 +43,7 @@ export default function PasswordProtection({
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -45,37 +54,38 @@ export default function PasswordProtection({
             </svg>
           </div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-            此文章受密码保护
+            此文章设置了阅读遮罩
           </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            请输入密码以查看内容
-          </p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">请输入密码继续阅读</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label
-              htmlFor="password"
+              htmlFor="reading-gate-password"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               密码
             </label>
             <input
-              id="password"
+              id="reading-gate-password"
               type="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value)
+              value={attempt}
+              onChange={(event) => {
+                setAttempt(event.target.value)
                 setError('')
               }}
               className="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:focus:border-primary-400 dark:focus:ring-primary-400"
               placeholder="请输入密码"
-              autoFocus
+              autoComplete="off"
             />
           </div>
 
           {error && (
-            <div className="rounded-lg bg-red-50 p-3 text-sm text-red-800 dark:bg-red-900/20 dark:text-red-400">
+            <div
+              role="alert"
+              className="rounded-lg bg-red-50 p-3 text-sm text-red-800 dark:bg-red-900/20 dark:text-red-400"
+            >
               {error}
             </div>
           )}
@@ -84,13 +94,12 @@ export default function PasswordProtection({
             type="submit"
             className="w-full rounded-lg bg-primary-600 px-4 py-2 font-medium text-white transition-colors hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:bg-primary-500 dark:hover:bg-primary-600"
           >
-            验证密码
+            继续阅读
           </button>
         </form>
 
         <p className="text-center text-xs text-gray-500 dark:text-gray-400">
-          提示：您也可以在 URL 中添加 <code className="rounded bg-gray-100 px-1 py-0.5 dark:bg-gray-700">?password=xxx</code>{' '}
-          参数直接访问
+          阅读遮罩用于避免无意访问，不会加密浏览器收到的正文。
         </p>
       </div>
     </div>
